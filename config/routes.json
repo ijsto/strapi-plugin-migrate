@@ -9,6 +9,14 @@
       }
     },
     {
+      "method": "GET",
+      "path": "/retrieveSqlString",
+      "handler": "migrate.retrieveSqlString",
+      "config": {
+        "policies": []
+      }
+    },
+    {
       "method": "POST",
       "path": "/uploadPostgres",
       "handler": "migrate.uploadPostgres",
