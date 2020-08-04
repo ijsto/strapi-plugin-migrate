@@ -1,0 +1,28 @@
+{
+  "name": "strapi-plugin-migrate",
+  "version": "0.0.1",
+  "description": "This is the description of the plugin.",
+  "strapi": {
+    "name": "Migrate Strapi",
+    "icon": "plug",
+    "description": "Description of strapi-plugin-migrate plugin."
+  },
+  "dependencies": {},
+  "author": {
+    "name": "Scott Agirs Neminskis",
+    "email": "scott@ijs.to",
+    "url": "https://ijs.to"
+  },
+  "maintainers": [
+    {
+      "name": "Scott Agirs Neminskis",
+      "email": "scott@ijs.to",
+      "url": "https://ijs.to"
+    }
+  ],
+  "engines": {
+    "node": ">=10.0.0",
+    "npm": ">=6.0.0"
+  },
+  "license": "MIT"
+}

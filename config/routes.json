@@ -1,0 +1,20 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/",
+      "handler": "migrate.index",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/uploadPostgres",
+      "handler": "migrate.uploadPostgres",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}
