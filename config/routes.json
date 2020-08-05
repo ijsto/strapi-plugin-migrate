@@ -9,7 +9,7 @@
       }
     },
     {
-      "method": "GET",
+      "method": "POST",
       "path": "/retrieveSqlString",
       "handler": "migrate.retrieveSqlString",
       "config": {
