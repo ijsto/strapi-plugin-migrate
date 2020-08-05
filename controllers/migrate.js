@@ -6,40 +6,73 @@
  * @description: A set of functions called "actions" of the `strapi-plugin-migrate` plugin.
  */
 
-const tableName = '\"users-permissions_permission\"';
+// const tableName = '"users-permissions_permission"';
 
 module.exports = {
-
   /**
    * Default action.
    *
    * @return {Object}
    */
 
-  index: async (ctx) => {
+  index: async ctx => {
     // Send 200 `ok`
     ctx.send({
-      message: 'ok'
+      message: 'ok',
     });
   },
-  uploadPostgres: async (ctx) => {
-    const result = await strapi.connections.default.raw(
-      ctx.request.body.postgresString
-    ).catch(err => { throw new Error(err) });
+  uploadPostgres: async ctx => {
+    try {
+      await strapi.connections.default.raw(ctx.request.body.postgresString);
 
-    return { success: true }
+      return { success: true };
+    } catch (err) {
+      throw new Error(err);
+    }
   },
-  retrieveSqlString: async (ctx) => {
-    const result = await strapi.connections.default.raw(
-      `SELECT * FROM public."users-permissions_permission"`
-    ).catch(err => { throw new Error(err) });
+  retrieveCurrentRoles: async () => {
+    try {
+      const currentRoles = await strapi.connections.default.raw(
+        `SELECT * FROM public."users-permissions_role"`,
+      );
 
-    const generatedString = result.rows.map(row => {
-      const enabled = row.enabled ? "true" : "false"
-      const { action, controller, role, type } = row
-      return `UPDATE "users-permissions_permission" SET "enabled" = ${enabled} WHERE "type" = '${type}' AND "controller" = '${controller}' AND "action" = '${action}' AND "role" = ${role}`;
-    }).join(";")
+      return { currentRoles: currentRoles.rows };
+    } catch (err) {
+      throw new Error(err);
+    }
+  },
+  retrieveSqlString: async ctx => {
+    const { updatedRoles } = ctx.request.body;
 
-    return { generatedString }
-  }
+    try {
+      const result = await strapi.connections.default.raw(
+        `SELECT * FROM public."users-permissions_permission"`,
+      );
+
+      const generatedString = result.rows
+        .map(row => {
+          const enabled = row.enabled ? 'true' : 'false';
+          const { action, controller, role: currentRoleId, type } = row;
+
+          if (updatedRoles) {
+            const found = updatedRoles.find(
+              updatedOne => updatedOne.id === currentRoleId,
+            );
+
+            if (found) {
+              console.log('Found -> found.newId', found.newId);
+              return `UPDATE "users-permissions_permission" SET "enabled" = ${enabled} WHERE "type" = '${type}' AND "controller" = '${controller}' AND "action" = '${action}' AND "role" = ${found.newId ||
+                found.id}`;
+            }
+          }
+
+          throw new Error('Error in retrieving SQL String');
+        })
+        .join(';');
+
+      return { generatedString };
+    } catch (err) {
+      throw new Error(err);
+    }
+  },
 };
