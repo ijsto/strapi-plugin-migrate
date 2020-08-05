@@ -22,6 +22,7 @@ module.exports = {
     });
   },
   uploadPostgres: async ctx => {
+    // @TODO: Create check that ensures that the query string IDs match the ones in the DB
     try {
       await strapi.connections.default.raw(ctx.request.body.postgresString);
 
