@@ -1,3 +1,4 @@
 {
-  "extends": "@ijsto"
+  "extends": "@ijsto",
+  "rules": { "strict": 0 }
 }
