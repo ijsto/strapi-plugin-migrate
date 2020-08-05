@@ -2,6 +2,8 @@
 <img width="500px" src="https://raw.githubusercontent.com/ijsto/strapi-plugin-migrate/249ab2a277716fa395ab4351e8e4e2d441e1df1b/admin/src/assets/images/readme-jumbo.png?token=ACZRTZE5WIFOY6ZQUBBITV27FIO2O"/>
 </p>
 
+# NOTE BENE: This plugin is currently in early-alpha testing stage, use at your own risk.
+
 # Strapi plugin strapi-plugin-migrate
 
 ## Quick start:
