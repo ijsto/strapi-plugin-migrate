@@ -5,7 +5,7 @@
   "strapi": {
     "name": "Migrate Strapi",
     "icon": "plug",
-    "description": "Description of strapi-plugin-migrate plugin."
+    "description": "Helps you migrate your Strapi application data."
   },
   "dependencies": {},
   "author": {
