@@ -1,14 +1,17 @@
 import pluginPkg from '../../package.json';
 import pluginId from './pluginId';
+import pluginLogo from './assets/images/logo.png';
+
 import App from './containers/App';
 import Initializer from './containers/Initializer';
 import lifecycles from './lifecycles';
 import trads from './translations';
 
 export default strapi => {
-  const pluginDescription = pluginPkg.strapi.description || pluginPkg.description;
-  const icon = pluginPkg.strapi.icon;
-  const name = pluginPkg.strapi.name;
+  const pluginDescription =
+    pluginPkg.strapi.description || pluginPkg.description;
+  const { icon } = pluginPkg.strapi;
+  const { name } = pluginPkg.strapi;
 
   const plugin = {
     blockerComponent: null,
@@ -22,6 +25,7 @@ export default strapi => {
     isRequired: pluginPkg.strapi.required || false,
     layout: null,
     lifecycles,
+    pluginLogo,
     mainComponent: App,
     name,
     preventComponentRendering: false,
