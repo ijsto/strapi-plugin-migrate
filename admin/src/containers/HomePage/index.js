@@ -4,13 +4,14 @@
  *
  */
 
+// eslint-disable-next-line import/no-extraneous-dependencies
 import React, { memo } from 'react';
 // import PropTypes from 'prop-types';
-import pluginId from '../../pluginId';
-import UploadFileForm from "../../components/UploadFileForm";
+// import pluginId from '../../pluginId';
+import UserPermissionsMigrator from '../../components/UserPermissionsMigrator';
 
 const HomePage = () => {
-  return <UploadFileForm />;
+  return <UserPermissionsMigrator />;
 };
 
 export default memo(HomePage);

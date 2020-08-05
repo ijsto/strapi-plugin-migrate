@@ -5,7 +5,7 @@ import { request } from 'strapi-helper-plugin';
 import Row from '../Row';
 import CurrentRoles from '../CurrentRoles';
 
-const UploadFileForm = () => {
+const UserPermissionsMigrator = () => {
   const [postgresString, setPostgresString] = useState('');
   const [retrievedPostgresString, setRetrievedPostgresString] = useState('');
   const [currentRoles, setCurrentRoles] = useState();
@@ -155,4 +155,4 @@ const UploadFileForm = () => {
   );
 };
 
-export default UploadFileForm;
+export default UserPermissionsMigrator;
