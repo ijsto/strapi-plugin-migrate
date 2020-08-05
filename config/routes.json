@@ -17,6 +17,14 @@
       }
     },
     {
+      "method": "GET",
+      "path": "/retrieveCurrentRoles",
+      "handler": "migrate.retrieveCurrentRoles",
+      "config": {
+        "policies": []
+      }
+    },
+    {
       "method": "POST",
       "path": "/uploadPostgres",
       "handler": "migrate.uploadPostgres",
