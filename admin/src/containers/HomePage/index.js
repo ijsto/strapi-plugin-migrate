@@ -8,10 +8,10 @@
 import React, { memo } from 'react';
 // import PropTypes from 'prop-types';
 // import pluginId from '../../pluginId';
-import UserPermissionsMigrator from '../../components/UserPermissionsMigrator';
+import UserPermissions from '../../components/UserPermissions';
 
 const HomePage = () => {
-  return <UserPermissionsMigrator />;
+  return <UserPermissions />;
 };
 
 export default memo(HomePage);
