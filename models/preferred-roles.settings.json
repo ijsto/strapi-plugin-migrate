@@ -1,0 +1,19 @@
+{
+  "kind": "collectionType",
+  "collectionName": "preferred_roles",
+  "info": {
+    "name": "Preferred Roles"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "typeName": {
+      "type": "string"
+    },
+    "roleId": {
+      "type": "integer"
+    }
+  }
+}
