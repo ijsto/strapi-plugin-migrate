@@ -2,5 +2,8 @@
   "extends": "@ijsto",
   "rules": {
     "strict": 0
+  },
+  "globals": {
+    "strapi": true
   }
 }
