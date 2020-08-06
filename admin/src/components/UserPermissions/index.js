@@ -2,7 +2,8 @@
 import React, { useState } from 'react';
 import { Button, Textarea } from '@buffetjs/core';
 import { request } from 'strapi-helper-plugin';
-import Row from '../Row';
+
+import Row from '../layout/Row';
 import CurrentRoles from '../CurrentRoles';
 
 const UserPermissions = () => {
