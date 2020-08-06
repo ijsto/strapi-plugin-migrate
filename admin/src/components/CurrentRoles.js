@@ -1,6 +1,6 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import React, { useEffect, useState } from 'react';
-import { Flex, InputNumber, Label } from '@buffetjs/core';
+import { Flex, InputNumber, Label, Padded } from '@buffetjs/core';
 import { request } from 'strapi-helper-plugin';
 import { updateObjectInArrayByType } from '../utils/helpers';
 
@@ -40,27 +40,29 @@ const CurrentRoles = ({ currentRoles, setCurrentRoles }) => {
       <h1>Current Roles</h1>
       <div>The role IDs must match with your target environment.</div>
 
-      <Flex>
-        {currentRoles?.map(role => (
-          <div style={{ marginRight: '10px' }}>
-            <Label htmlFor="auth-role">
-              {role.name} (Current ID: {role.id})
-            </Label>
-            <InputNumber
-              value={role.newId || role.id}
-              onChange={({ target: { value } }) => {
-                setCurrentRoles(
-                  updateObjectInArrayByType(currentRoles, {
-                    type: role.type,
-                    newId: value,
-                  }),
-                );
-              }}
-              name={role.type}
-            />
-          </div>
-        ))}
-      </Flex>
+      <Padded top size="smd">
+        <Flex style={{ flexWrap: 'wrap' }}>
+          {currentRoles?.map(role => (
+            <Padded right size="10px" style={{ flex: '0 1 147px' }}>
+              <Label htmlFor="auth-role">
+                {role.name} <b>{role.id}</b>
+              </Label>
+              <InputNumber
+                value={role.newId || role.id}
+                onChange={({ target: { value } }) => {
+                  setCurrentRoles(
+                    updateObjectInArrayByType(currentRoles, {
+                      type: role.type,
+                      newId: value,
+                    }),
+                  );
+                }}
+                name={role.type}
+              />
+            </Padded>
+          ))}
+        </Flex>
+      </Padded>
     </div>
   );
 };

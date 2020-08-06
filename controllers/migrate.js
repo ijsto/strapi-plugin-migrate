@@ -44,6 +44,7 @@ module.exports = {
   },
   retrieveSqlString: async ctx => {
     const { updatedRoles } = ctx.request.body;
+    if (!updatedRoles) throw new Error('No user roles data was received.');
 
     try {
       const result = await strapi.connections.default.raw(
@@ -61,7 +62,6 @@ module.exports = {
             );
 
             if (found) {
-              console.log('Found -> found.newId', found.newId);
               return `UPDATE "users-permissions_permission" SET "enabled" = ${enabled} WHERE "type" = '${type}' AND "controller" = '${controller}' AND "action" = '${action}' AND "role" = ${found.newId ||
                 found.id}`;
             }

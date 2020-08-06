@@ -4,7 +4,7 @@ import { Button, Textarea } from '@buffetjs/core';
 import { request } from 'strapi-helper-plugin';
 
 import Row from '../layout/Row';
-import CurrentRoles from '../CurrentRoles';
+import EditRoleIdsModal from './EditRoleIdsModal';
 
 const UserPermissions = () => {
   const [postgresString, setPostgresString] = useState('');
@@ -20,6 +20,8 @@ const UserPermissions = () => {
   const [submitSuccess, setSubmitSuccess] = useState(false);
 
   const [copySuccess, setCopySuccess] = useState(false);
+
+  const [isModalOpen, setModalOpen] = useState(false);
 
   const handleRetrieve = async () => {
     setErrorRetrieve(false);
@@ -74,21 +76,26 @@ const UserPermissions = () => {
     setCopySuccess(true);
   };
 
+  const handleOpenModal = () => setModalOpen(true);
+  const handleCloseModal = () => setModalOpen(false);
+
   return (
     <div style={{ padding: '1.8rem 1.5rem' }}>
+      <Button label="Edit User IDs" onClick={handleOpenModal} />
+
       <h1 style={{ marginTop: '3rem' }}>Export Permissions</h1>
       <div>
         You will get a raw SQL query that you will be able to paste in another
         environment (for example staging, production).
       </div>
-
-      <Row>
-        <CurrentRoles
-          currentRoles={currentRoles}
-          setCurrentRoles={setCurrentRoles}
-        />
-      </Row>
-
+      <EditRoleIdsModal
+        isOpen={isModalOpen}
+        setOpen={setModalOpen}
+        handleOpenModal={handleOpenModal}
+        handleCloseModal={handleCloseModal}
+        currentRoles={currentRoles}
+        setCurrentRoles={setCurrentRoles}
+      />
       <Row>
         <Button
           disabled={loadingRetrieve}
@@ -105,11 +112,9 @@ const UserPermissions = () => {
           />
         )}
       </Row>
-
       <Row>
         <Textarea value={retrievedPostgresString} readOnly />
       </Row>
-
       {!errorRetrieve && retrievedPostgresString && !loadingRetrieve && (
         <Row>
           <div style={{ color: '#28a745' }}>User permissions retrieved.</div>
@@ -120,11 +125,9 @@ const UserPermissions = () => {
           <div style={{ color: '#dc3545' }}>Uh-oh! Something went wrong.</div>
         </Row>
       )}
-
       <hr />
       <h1>Import Permissions</h1>
       <div>Paste in the raw SQL query of your User Permissions table</div>
-
       <Row>
         <Textarea
           disabled={loadingSubmit}
@@ -132,7 +135,6 @@ const UserPermissions = () => {
           value={postgresString}
         />
       </Row>
-
       {!errorSubmit && submitSuccess && !loadingSubmit && (
         <Row>
           <div style={{ color: '#28a745' }}>User permissions imported!</div>
@@ -143,7 +145,6 @@ const UserPermissions = () => {
           <div style={{ color: '#dc3545' }}>Uh-oh! Something went wrong.</div>
         </Row>
       )}
-
       <Row>
         <Button
           isLoading={loadingSubmit}
