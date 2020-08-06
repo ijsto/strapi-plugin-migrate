@@ -41,9 +41,9 @@ const CurrentRoles = ({ currentRoles, setCurrentRoles }) => {
       <div>The role IDs must match with your target environment.</div>
 
       <Padded top size="smd">
-        <Flex style={{ flexWrap: 'wrap' }}>
+        <Flex justifyContent="center" style={{ flexWrap: 'wrap' }}>
           {currentRoles?.map(role => (
-            <Padded right size="10px" style={{ flex: '0 1 147px' }}>
+            <Padded right size="10px" style={{ flex: '0 1 143px' }}>
               <Label htmlFor="auth-role">
                 {role.name} <b>{role.id}</b>
               </Label>

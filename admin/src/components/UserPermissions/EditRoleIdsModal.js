@@ -25,7 +25,7 @@ const EditRoleIdsModal = ({
     <Modal isOpen={isOpen} onToggle={handleToggle} onClosed={handleClose}>
       <ModalHeader headerBreadcrumbs={['Edit User-Permissions roles']} />
 
-      <Padded top left right bottom size="16px">
+      <Padded top left right bottom size="30px">
         <CurrentRoles
           currentRoles={currentRoles}
           setCurrentRoles={setCurrentRoles}

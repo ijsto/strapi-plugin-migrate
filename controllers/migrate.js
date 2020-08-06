@@ -34,7 +34,7 @@ module.exports = {
   retrieveCurrentRoles: async () => {
     try {
       const currentRoles = await strapi.connections.default.raw(
-        `SELECT * FROM public."users-permissions_role"`,
+        `SELECT * FROM public."users-permissions_role" ORDER BY type ASC`,
       );
 
       return { currentRoles: currentRoles.rows };
