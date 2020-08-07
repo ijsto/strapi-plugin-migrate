@@ -1,11 +1,17 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import React, { useEffect, useState } from 'react';
+import { Route } from 'react-router-dom';
 import { Button } from '@buffetjs/core';
-import { request } from 'strapi-helper-plugin';
+import { HeaderNav, request } from 'strapi-helper-plugin';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { camelCase } from 'lodash';
+
+// eslint-disable-next-line import/no-extraneous-dependencies
+import getTrad from '../../utils/getTrad';
 
 import EditRoleIdsModal from './EditRoleIdsModal';
-import ImportPermissions from './ImportPermissions';
-import ExportPermissions from './ExportPermissions';
+import pluginId from '../../pluginId';
+import ImportExportTool from './ImportExportTool';
 
 const UserPermissions = () => {
   const [currentRoles, setCurrentRoles] = useState();
@@ -26,13 +32,13 @@ const UserPermissions = () => {
       const response = await request('/migrate/retrieveCurrentRoles', {
         method: 'GET',
       });
-      console.log('handleRetrieveRoles -> response', response);
 
       if (response) {
         setCurrentRoles(response.currentRoles);
         setLoadingRetrieve(false);
       }
     } catch (e) {
+      // eslint-disable-next-line no-console
       console.log('Error: ', e);
       setErrorRetrieve(true);
       setLoadingRetrieve(false);
@@ -43,12 +49,31 @@ const UserPermissions = () => {
     handleRetrieveRoles();
   }, []);
 
+  const tabs = ['import', 'export'].map(tabName => {
+    const name = tabName;
+    const camelCaseName = camelCase(tabName);
+
+    return {
+      tabName,
+      to: `/plugins/${pluginId}/user-permissions/${name}`,
+      name: getTrad(`HeaderNav.link.${camelCaseName}`),
+    };
+  });
+
   if (loadingRetrieve) return 'Loading roles...';
   if (errorRetrieve) return 'Failed loading roles...';
 
   return (
     <div style={{ padding: '1.8rem 1.5rem' }}>
       <Button label="Edit User IDs" onClick={handleOpenModal} />
+
+      <HeaderNav links={tabs} style={{ marginTop: '4.6rem' }} />
+
+      <Route
+        path={`/plugins/${pluginId}/:settingType/:action`}
+        render={props => <ImportExportTool {...props} />}
+        exact
+      />
 
       <EditRoleIdsModal
         isOpen={isModalOpen}
@@ -58,12 +83,6 @@ const UserPermissions = () => {
         currentRoles={currentRoles}
         setCurrentRoles={setCurrentRoles}
       />
-      <ExportPermissions
-        currentRoles={currentRoles}
-        setCurrentRoles={setCurrentRoles}
-      />
-      <hr />
-      <ImportPermissions />
     </div>
   );
 };
