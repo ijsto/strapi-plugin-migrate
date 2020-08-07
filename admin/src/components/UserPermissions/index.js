@@ -3,7 +3,8 @@ import React, { useEffect, useState } from 'react';
 import { Route } from 'react-router-dom';
 import { Button } from '@buffetjs/core';
 import { useGlobalContext, HeaderNav, request } from 'strapi-helper-plugin';
-
+// eslint-disable-next-line import/no-extraneous-dependencies
+import styled from 'styled-components';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { camelCase } from 'lodash';
 
@@ -13,6 +14,20 @@ import getTrad from '../../utils/getTrad';
 import EditRoleIdsModal from './EditRoleIdsModal';
 import pluginId from '../../pluginId';
 import ImportExportTool from './ImportExportTool';
+import LoadingIndicator from '../feedback/LoadingIndicator';
+
+const StyledInfoHeader = styled.div`
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-gap: 2rem;
+  margin: 1rem 0;
+  padding: 1rem 0;
+  .info {
+    border-radius: 0.25rem;
+    background-color: var(--warning);
+    padding: 2rem;
+  }
+`;
 
 const UserPermissions = () => {
   const [currentRoles, setCurrentRoles] = useState();
@@ -66,14 +81,26 @@ const UserPermissions = () => {
     };
   });
 
-  if (loadingRetrieve) return 'Loading roles...';
+  if (loadingRetrieve) return <LoadingIndicator />;
   if (errorRetrieve) return 'Failed loading roles...';
 
   return (
     <div style={{ padding: '1.8rem 1.5rem' }}>
-      <Button label="Edit User IDs" onClick={handleOpenModal} />
+      <StyledInfoHeader>
+        <div className="info">
+          <h4>Be sure to synchronize your user role IDs.</h4>
+          <Button
+            label="How?"
+            color="success"
+            onClick={() => alert('Tutorial is coming soon!')}
+            style={{ marginRight: '1em' }}
+          />
+          <Button label="Synchronize now" onClick={handleOpenModal} />
+        </div>
+        <div>More info</div>
+      </StyledInfoHeader>
 
-      <HeaderNav links={tabs} style={{ marginTop: '4.6rem' }} />
+      <HeaderNav links={tabs} style={{ marginTop: '1.6rem' }} />
 
       <Route
         path={`/plugins/${pluginId}/:settingType/:action`}
