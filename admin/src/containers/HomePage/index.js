@@ -7,14 +7,18 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 import React, { memo } from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies
-import { ViewContainer } from 'strapi-helper-plugin';
+import { Padded } from '@buffetjs/core';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { ViewContainer, useGlobalContext } from 'strapi-helper-plugin';
 
 // import PropTypes from 'prop-types';
 import UserPermissions from '../../components/UserPermissions';
 import pluginId from '../../pluginId';
 import Sidebar from '../Sidebar';
+import getTrad from '../../utils/getTrad';
 
 const HomePage = () => {
+  const { formatMessage } = useGlobalContext();
   return (
     <ViewContainer className={pluginId}>
       <div className="container-fluid">
@@ -22,7 +26,14 @@ const HomePage = () => {
           <Sidebar />
 
           <div className="col-md-9">
-            <UserPermissions />
+            <Padded top size="smd">
+              <h1>
+                {formatMessage({
+                  id: getTrad(`HomePage.header.title`),
+                })}
+              </h1>
+              <UserPermissions />
+            </Padded>
           </div>
         </div>
       </div>

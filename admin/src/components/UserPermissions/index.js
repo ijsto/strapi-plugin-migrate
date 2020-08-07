@@ -2,7 +2,8 @@
 import React, { useEffect, useState } from 'react';
 import { Route } from 'react-router-dom';
 import { Button } from '@buffetjs/core';
-import { HeaderNav, request } from 'strapi-helper-plugin';
+import { useGlobalContext, HeaderNav, request } from 'strapi-helper-plugin';
+
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { camelCase } from 'lodash';
 
@@ -23,6 +24,8 @@ const UserPermissions = () => {
 
   const [loadingRetrieve, setLoadingRetrieve] = useState(false);
   const [errorRetrieve, setErrorRetrieve] = useState(null);
+
+  const { formatMessage } = useGlobalContext();
 
   const handleRetrieveRoles = async () => {
     setErrorRetrieve(false);
@@ -56,7 +59,10 @@ const UserPermissions = () => {
     return {
       tabName,
       to: `/plugins/${pluginId}/user-permissions/${name}`,
-      name: getTrad(`HeaderNav.link.${camelCaseName}`),
+
+      name: formatMessage({
+        id: getTrad(`UserPermissions.HeaderNav.link.${camelCaseName}`),
+      }),
     };
   });
 
