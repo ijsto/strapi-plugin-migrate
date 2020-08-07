@@ -1,11 +1,14 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import React, { useState } from 'react';
 import { Button, Textarea } from '@buffetjs/core';
-import { request } from 'strapi-helper-plugin';
+
+import { useGlobalContext, request } from 'strapi-helper-plugin';
 
 import Row from '../layout/Row';
+import getTrad from '../../utils/getTrad';
 
 const ImportPermissions = () => {
+  const { formatMessage } = useGlobalContext();
   const [postgresString, setPostgresString] = useState('');
 
   const [loadingSubmit, setLoadingSubmit] = useState(false);
@@ -30,6 +33,7 @@ const ImportPermissions = () => {
         setSubmitSuccess(true);
       }
     } catch (e) {
+      // eslint-disable-next-line no-console
       console.log('Error: ', e);
       setErrorSubmit(true);
       setLoadingSubmit(false);
@@ -37,8 +41,11 @@ const ImportPermissions = () => {
   };
 
   return (
-    <div style={{ padding: '1.8rem 1.5rem' }}>
-      <h1>Import Permissions</h1>
+    <div>
+      <h1>
+        {/* @TODO: fix React Router so that could use :action and replace hard-coded "import" */}
+        {formatMessage({ id: getTrad(`UserPermissions.${'import'}.title`) })}
+      </h1>
       <div>Paste in the raw SQL query of your User Permissions table</div>
       <Row>
         <Textarea
