@@ -23,7 +23,7 @@ const App = () => {
       <Switch>
         <Route
           path={`/plugins/${pluginId}/:settingType/:action`}
-          render={props => <HomePage {...props} />}
+          render={() => <HomePage />}
           exact
         />
 

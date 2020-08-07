@@ -14,7 +14,7 @@ import UserPermissions from '../../components/UserPermissions';
 import pluginId from '../../pluginId';
 import Sidebar from '../Sidebar';
 
-const HomePage = props => {
+const HomePage = () => {
   return (
     <ViewContainer className={pluginId}>
       <div className="container-fluid">
@@ -22,7 +22,7 @@ const HomePage = props => {
           <Sidebar />
 
           <div className="col-md-9">
-            <UserPermissions {...props} />
+            <UserPermissions />
           </div>
         </div>
       </div>
