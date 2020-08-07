@@ -15,16 +15,28 @@ const StyledSidebar = styled.div`
   min-height: calc(100vh - 6rem);
 `;
 
+const StyledLink = styled.div`
+  padding: 1.5rem 0 0.5rem;
+  border-bottom: 0.2rem solid #1c5de7;
+  cursor: pointer;
+  font-weight: bold;
+  &:hover {
+    border-bottom: 0.2rem solid #17a2b8;
+  }
+`;
+
 const Sidebar = () => {
   const { formatMessage } = useGlobalContext();
   return (
     <StyledSidebar className="col-md-3">
       <h2>Migrate</h2>
 
-      <div>
+      <StyledLink>
         {formatMessage({ id: getTrad(`Sidebar.link.userPermissions`) })}
-      </div>
-      <div>{formatMessage({ id: getTrad(`Sidebar.link.content`) })}</div>
+      </StyledLink>
+      <StyledLink>
+        {formatMessage({ id: getTrad(`Sidebar.link.content`) })}
+      </StyledLink>
     </StyledSidebar>
   );
 };
