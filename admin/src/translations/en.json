@@ -1,1 +1,16 @@
-{}
+{
+  "EditPage.submit": "Save",
+  "Sidebar.link.userPermissions": "User Permissions",
+  "Sidebar.link.content": "Content",
+  "HomePage.header.description": "Easily migrate Strapi data between project environments.",
+  "HomePage.header.title": "Strapi Migrate",
+  "UserPermissions.import.title": "Import Permissions",
+  "UserPermissions.export.title": "Export Permissions",
+  "UserPermissions.HeaderNav.link.import": "Import",
+  "UserPermissions.HeaderNav.link.export": "Export",
+  "notification.error.userPermissions.retrieveSql": "An error occurred while trying to export user permissions",
+  "notification.error.userPermissions.importSql": "An error occurred while importing user permissions",
+  "notification.error.userPermissions.retrieveSql.copied": "Copied to Clipboard!",
+  "notification.error.userPermissions.importSql.success": "User Permissions were successfully imported!",
+  "plugin.name": "Strapi Migrate"
+}
