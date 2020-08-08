@@ -1,29 +1,18 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import React, { useState } from 'react';
-import styled from 'styled-components';
 import { Button } from '@buffetjs/core';
 import { useGlobalContext, request } from 'strapi-helper-plugin';
 
 import Row from '../layout/Row';
-import EditRoleIdsModal from './EditRoleIdsModal';
+import BackUpModal from './BackUpModal';
 import getTrad from '../../utils/getTrad';
-
-const StyledResultContainer = styled.div`
-  max-height: 300px;
-  padding: 1rem;
-  background: #fafafb;
-  border: 1px solid lightgrey;
-  border-radius: 0.25rem;
-  margin-top: 1rem;
-  overflow-y: auto;
-`;
+import ResultsContainer from './ResultsContainer';
 
 const ExportPermissions = ({ currentRoles, setCurrentRoles }) => {
   const { formatMessage } = useGlobalContext();
   const [retrievedPostgresString, setRetrievedPostgresString] = useState('');
 
   const [loadingRetrieve, setLoadingRetrieve] = useState(false);
-
   const [errorRetrieve, setErrorRetrieve] = useState(null);
 
   const [copySuccess, setCopySuccess] = useState(false);
@@ -37,7 +26,7 @@ const ExportPermissions = ({ currentRoles, setCurrentRoles }) => {
     try {
       const response = await request('/migrate/retrieveSqlString', {
         method: 'POST',
-        body: { updatedRoles: currentRoles, type: 'postgres' },
+        body: { type: 'postgres' },
       });
 
       if (response) {
@@ -57,6 +46,7 @@ const ExportPermissions = ({ currentRoles, setCurrentRoles }) => {
   const handleCopy = () => {
     navigator.clipboard.writeText(retrievedPostgresString);
     setCopySuccess(true);
+    setTimeout(() => setCopySuccess(false), 1500);
   };
 
   const handleOpenModal = () => setModalOpen(true);
@@ -69,7 +59,7 @@ const ExportPermissions = ({ currentRoles, setCurrentRoles }) => {
         You will get a raw SQL query that you will be able to paste in another
         environment (for example staging, production).
       </div>
-      <EditRoleIdsModal
+      <BackUpModal
         isOpen={isModalOpen}
         setOpen={setModalOpen}
         handleOpenModal={handleOpenModal}
@@ -88,7 +78,7 @@ const ExportPermissions = ({ currentRoles, setCurrentRoles }) => {
         {retrievedPostgresString && (
           <Button
             color={copySuccess ? 'success' : 'primary'}
-            label={copySuccess ? 'Copied!' : 'Copy Permissions query'}
+            label={copySuccess ? 'Copied!' : 'Copy Data'}
             onClick={handleCopy}
           />
         )}
@@ -109,7 +99,7 @@ const ExportPermissions = ({ currentRoles, setCurrentRoles }) => {
       )}
 
       {retrievedPostgresString && (
-        <StyledResultContainer>{retrievedPostgresString}</StyledResultContainer>
+        <ResultsContainer>{retrievedPostgresString}</ResultsContainer>
       )}
     </div>
   );

@@ -10,6 +10,14 @@
     },
     {
       "method": "POST",
+      "path": "/backUpCurrentPermissions",
+      "handler": "spm-migrate.backUpCurrentPermissions",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
       "path": "/retrieveSqlString",
       "handler": "spm-migrate.retrieveSqlString",
       "config": {

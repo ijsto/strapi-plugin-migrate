@@ -6,8 +6,6 @@
  * @description: A set of functions called "actions" of the `strapi-plugin-migrate` plugin.
  */
 
-// const tableName = '"users-permissions_permission"';
-
 module.exports = {
   /**
    * Default action.
@@ -22,9 +20,21 @@ module.exports = {
     });
   },
   uploadPostgres: async ctx => {
-    // @TODO: Create check that ensures that the query string IDs match the ones in the DB
     try {
-      await strapi.connections.default.raw(ctx.request.body.postgresString);
+      const importedString = ctx.request.body.postgresString;
+
+      const rolesAPI = strapi.query('role', 'users-permissions');
+      const roles = await rolesAPI.find({ _limit: -1 });
+
+      let updatedString = importedString;
+      roles.map(role => {
+        const toReplace = `${role.type}_ID_TBR`;
+        const replacer = new RegExp(toReplace, 'g');
+        updatedString = updatedString.replace(replacer, role.id);
+        return updatedString;
+      });
+
+      await strapi.connections.default.raw(updatedString);
 
       return { success: true };
     } catch (err) {
@@ -33,47 +43,42 @@ module.exports = {
   },
   retrieveCurrentRoles: async () => {
     try {
-      const currentRoles = await strapi.connections.default.raw(
-        `SELECT * FROM public."users-permissions_role" ORDER BY type ASC`,
-      );
+      const rolesAPI = strapi.query('role', 'users-permissions');
+      const roles = await rolesAPI.find({ _limit: -1 });
 
-      return { currentRoles: currentRoles.rows };
+      return { currentRoles: roles };
     } catch (err) {
       throw new Error(err);
     }
   },
-  retrieveSqlString: async ctx => {
-    const { updatedRoles } = ctx.request.body;
-    if (!updatedRoles) throw new Error('No user roles data was received.');
+  retrieveSqlString: async () => {
+    const permissionsAPI = strapi.query('permission', 'users-permissions');
+    const permissions = await permissionsAPI.find({ _limit: -1 });
 
-    try {
-      const result = await strapi.connections.default.raw(
-        `SELECT * FROM public."users-permissions_permission"`,
-      );
+    const generatedString = permissions
+      .map(permission => {
+        const enabled = permission.enabled ? 'true' : 'false';
+        const { action, controller, type, role } = permission;
 
-      const generatedString = result.rows
-        .map(row => {
-          const enabled = row.enabled ? 'true' : 'false';
-          const { action, controller, role: currentRoleId, type } = row;
+        return `UPDATE "users-permissions_permission" SET "enabled" = ${enabled} WHERE "type" = '${type}' AND "controller" = '${controller}' AND "action" = '${action}' AND "role" = ${role.type}_ID_TBR`;
+      })
+      .join(';');
 
-          if (updatedRoles) {
-            const found = updatedRoles.find(
-              updatedOne => updatedOne.id === currentRoleId,
-            );
+    return { generatedString };
+  },
+  backUpCurrentPermissions: async () => {
+    const permissionsAPI = strapi.query('permission', 'users-permissions');
+    const permissions = await permissionsAPI.find({ _limit: -1 });
 
-            if (found) {
-              return `UPDATE "users-permissions_permission" SET "enabled" = ${enabled} WHERE "type" = '${type}' AND "controller" = '${controller}' AND "action" = '${action}' AND "role" = ${found.newId ||
-                found.id}`;
-            }
-          }
+    const generatedString = permissions
+      .map(permission => {
+        const enabled = permission.enabled ? 'true' : 'false';
+        const { action, controller, type, role } = permission;
 
-          throw new Error('Error in retrieving SQL String');
-        })
-        .join(';');
+        return `UPDATE "users-permissions_permission" SET "enabled" = ${enabled} WHERE "type" = '${type}' AND "controller" = '${controller}' AND "action" = '${action}' AND "role" = ${role.id}`;
+      })
+      .join(';');
 
-      return { generatedString };
-    } catch (err) {
-      throw new Error(err);
-    }
+    return { generatedString };
   },
 };

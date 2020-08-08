@@ -30,7 +30,7 @@ const App = () => {
         <Route
           path={`/plugins/${pluginId}`}
           render={() => (
-            <Redirect to={`/plugins/${pluginId}/user-permissions/import`} />
+            <Redirect to={`/plugins/${pluginId}/user-permissions/export`} />
           )}
           exact
         />
