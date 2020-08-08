@@ -30,7 +30,7 @@ const StyledLink = styled.div`
 const Sidebar = () => {
   const { formatMessage } = useGlobalContext();
   const { migrateType } = useParams();
-  console.log('Sidebar -> migrateType', migrateType);
+
   return (
     <StyledSidebar className="col-md-3">
       <h2>Strapi Migrate</h2>
