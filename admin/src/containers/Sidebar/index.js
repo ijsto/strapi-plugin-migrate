@@ -33,13 +33,13 @@ const Sidebar = () => {
   console.log('Sidebar -> migrateType', migrateType);
   return (
     <StyledSidebar className="col-md-3">
-      <h2>Migrate</h2>
+      <h2>Strapi Migrate</h2>
 
       <StyledLink active={migrateType === 'user-permissions'}>
         {formatMessage({ id: getTrad(`Sidebar.link.userPermissions`) })}
       </StyledLink>
       <StyledLink>
-        {formatMessage({ id: getTrad(`Sidebar.link.content`) })}
+        {formatMessage({ id: getTrad(`Sidebar.link.content`) })} (coming soon)
       </StyledLink>
     </StyledSidebar>
   );

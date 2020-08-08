@@ -3,7 +3,7 @@
   "Sidebar.link.userPermissions": "User Permissions",
   "Sidebar.link.content": "Content",
   "HomePage.header.description": "Easily migrate Strapi data between project environments.",
-  "HomePage.header.title": "Strapi Migrate",
+  "HomePage.header.title": "Migrate User Permissions",
   "UserPermissions.import.title": "Import Permissions",
   "UserPermissions.export.title": "Export Permissions",
   "UserPermissions.HeaderNav.link.import": "Import",
