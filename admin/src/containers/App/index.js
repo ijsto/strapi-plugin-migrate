@@ -22,7 +22,7 @@ const App = () => {
     <div>
       <Switch>
         <Route
-          path={`/plugins/${pluginId}/:settingType/:action`}
+          path={`/plugins/${pluginId}/:migrateType/:action`}
           render={() => <HomePage />}
           exact
         />

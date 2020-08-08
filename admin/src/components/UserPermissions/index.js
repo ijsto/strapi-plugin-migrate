@@ -146,7 +146,7 @@ const UserPermissions = () => {
       <HeaderNav links={tabs} style={{ marginTop: '1.6rem' }} />
 
       <Route
-        path={`/plugins/${pluginId}/:settingType/:action`}
+        path={`/plugins/${pluginId}/:migrateType/:action`}
         render={props => <ImportExportTool {...props} />}
         exact
       />

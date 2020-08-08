@@ -19,6 +19,7 @@ import getTrad from '../../utils/getTrad';
 
 const HomePage = () => {
   const { formatMessage } = useGlobalContext();
+
   return (
     <ViewContainer className={pluginId}>
       <div className="container-fluid">

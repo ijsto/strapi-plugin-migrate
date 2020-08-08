@@ -4,6 +4,8 @@ import React from 'react';
 import { useGlobalContext } from 'strapi-helper-plugin';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import styled from 'styled-components';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { useParams } from 'react-router-dom';
 
 import getTrad from '../../utils/getTrad';
 
@@ -17,21 +19,23 @@ const StyledSidebar = styled.div`
 
 const StyledLink = styled.div`
   padding: 1.5rem 0 0.5rem;
-  border-bottom: 0.2rem solid #1c5de7;
   cursor: pointer;
-  font-weight: bold;
+  font-weight: ${({ active }) => (active ? 'bold' : 'normal')};
   &:hover {
-    border-bottom: 0.2rem solid #17a2b8;
+    color: var(--blue);
+    font-weight: bold;
   }
 `;
 
 const Sidebar = () => {
   const { formatMessage } = useGlobalContext();
+  const { migrateType } = useParams();
+  console.log('Sidebar -> migrateType', migrateType);
   return (
     <StyledSidebar className="col-md-3">
       <h2>Migrate</h2>
 
-      <StyledLink>
+      <StyledLink active={migrateType === 'user-permissions'}>
         {formatMessage({ id: getTrad(`Sidebar.link.userPermissions`) })}
       </StyledLink>
       <StyledLink>
