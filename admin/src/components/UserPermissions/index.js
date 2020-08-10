@@ -102,24 +102,10 @@ const UserPermissions = () => {
   return (
     <div style={{ padding: '1.8rem 1.5rem' }}>
       <StyledInfoHeader>
-        <div>
-          <h4>Need help?</h4>
-          <div>
-            If you get stuck, you can check out the below blog post for a quick
-            rundown of the steps.
-          </div>
-
-          <StyledButtonLink
-            target="_blank"
-            rel="noreferrer noopener"
-            href="https://ijs.to/p/how-to-migrate-strapi-permissions"
-          >
-            Read blog post
-          </StyledButtonLink>
-        </div>
+        <div />
         <div className="info">
-          <h3>Did this help?</h3>
-          <div>If this helped you save some time and hassle.</div>
+          <h3>Saved time?</h3>
+          <div>If this plugin helped you save some time and hassle.</div>
           <StyledButtonLink
             target="_blank"
             rel="noreferrer noopener"
