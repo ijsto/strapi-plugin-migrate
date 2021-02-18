@@ -1,6 +1,6 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import React, { useState } from 'react';
-import { Route } from 'react-router-dom';
+import { Route, Redirect } from 'react-router-dom';
 import { Button } from '@buffetjs/core';
 import { useGlobalContext, HeaderNav } from 'strapi-helper-plugin';
 // eslint-disable-next-line import/no-extraneous-dependencies
@@ -12,7 +12,7 @@ import { camelCase } from 'lodash';
 import getTrad from '../../utils/getTrad';
 
 import BackUpModal from './BackUpModal';
-import pluginId from '../../pluginId';
+import basePluginUrl from '../../basePluginUrl';
 import ImportExportTool from './ImportExportTool';
 
 const StyledInfoHeader = styled.div`
@@ -89,7 +89,7 @@ const UserPermissions = () => {
 
     return {
       tabName,
-      to: `/plugins/${pluginId}/user-permissions/${name}`,
+      to: `${basePluginUrl}/user-permissions/${name}`,
 
       name: formatMessage({
         id: getTrad(`UserPermissions.HeaderNav.link.${camelCaseName}`),
@@ -100,50 +100,57 @@ const UserPermissions = () => {
   const twitterShareLink = `https://twitter.com/intent/tweet?text=Just%20saved%20bunch%20of%20time%20with%20this%20awesome%20Strapi%20migration%20plugin!%20https%3A%2F%2Fwww.npmjs.com%2Fpackage%2Fstrapi-plugin-migrate`;
 
   return (
-    <div style={{ padding: '1.8rem 1.5rem' }}>
-      <StyledInfoHeader>
-        <div />
-        <div className="info">
-          <h3>Saved time?</h3>
-          <div>If this plugin helped you save some time and hassle.</div>
-          <StyledButtonLink
-            target="_blank"
-            rel="noreferrer noopener"
-            href={twitterShareLink}
-          >
-            Share it with others!
-          </StyledButtonLink>
-        </div>
-      </StyledInfoHeader>
-
-      <StyledNotice>
-        <div className="body">
-          <h2>Back up</h2>
-          <div>
-            If you have a big database or even just for a good hygiene ang
-            general safety - you can back up your current settings.
-          </div>
-        </div>
-        <div className="cta">
-          <Button label="Back up now" onClick={handleOpenModal} />
-        </div>
-      </StyledNotice>
-
-      <HeaderNav links={tabs} style={{ marginTop: '1.6rem' }} />
-
+    <>
       <Route
-        path={`/plugins/${pluginId}/:migrateType/:action`}
-        render={props => <ImportExportTool {...props} />}
+        path={`${basePluginUrl}/user-permissions`}
+        render={() => (
+          <Redirect to={`${basePluginUrl}/user-permissions/export`} />
+        )}
         exact
       />
+      <div style={{ padding: '1.8rem 1.5rem' }}>
+        <StyledNotice>
+          <div className="body">
+            <h2>Back up</h2>
+            <div>
+              If you have a big database or even just for a good hygiene ang
+              general safety - you can back up your current settings.
+            </div>
+          </div>
+          <div className="cta">
+            <Button label="Back up now" onClick={handleOpenModal} />
+          </div>
+        </StyledNotice>
 
-      <BackUpModal
-        isOpen={isModalOpen}
-        setOpen={setModalOpen}
-        handleOpenModal={handleOpenModal}
-        handleCloseModal={handleCloseModal}
-      />
-    </div>
+        <HeaderNav links={tabs} style={{ marginTop: '1.6rem' }} />
+        <Route
+          path={`${basePluginUrl}/:migrateType/:action`}
+          render={props => <ImportExportTool {...props} />}
+          exact
+        />
+
+        <StyledInfoHeader>
+          <div />
+          <div className="info">
+            <h3>Saved time?</h3>
+            <div>If this plugin helped you save some time and hassle.</div>
+            <StyledButtonLink
+              target="_blank"
+              rel="noreferrer noopener"
+              href={twitterShareLink}
+            >
+              Share it with others!
+            </StyledButtonLink>
+          </div>
+        </StyledInfoHeader>
+        <BackUpModal
+          isOpen={isModalOpen}
+          setOpen={setModalOpen}
+          handleOpen={handleOpenModal}
+          handleClose={handleCloseModal}
+        />
+      </div>
+    </>
   );
 };
 
