@@ -27,13 +27,13 @@ const HomePage = () => {
           <Sidebar />
 
           <div className="col-md-9">
-            <Padded top size="smd">
+            <Padded top left size="smd">
               <h1>
                 {formatMessage({
                   id: getTrad(`HomePage.header.title`),
                 })}
               </h1>
-              <UserPermissions />
+              Strapi Migrate Dashboard
             </Padded>
           </div>
         </div>
