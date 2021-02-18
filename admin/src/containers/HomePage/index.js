@@ -26,7 +26,7 @@ const HomePage = () => {
           <Sidebar />
 
           <div className="col-md-9">
-            <Padded top left size="smd">
+            <Padded top left right size="smd">
               <h1>
                 {formatMessage({
                   id: getTrad(`HomePage.header.title`),

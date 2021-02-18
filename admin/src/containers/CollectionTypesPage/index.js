@@ -26,7 +26,7 @@ const CollectionTypesPage = () => {
           <Sidebar />
 
           <div className="col-md-9">
-            <Padded top size="smd">
+            <Padded top left right size="smd">
               <h1>
                 {formatMessage({
                   id: getTrad(`CollectionTypes.header.title`),
