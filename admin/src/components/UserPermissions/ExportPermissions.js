@@ -62,8 +62,8 @@ const ExportPermissions = ({ currentRoles, setCurrentRoles }) => {
       <BackUpModal
         isOpen={isModalOpen}
         setOpen={setModalOpen}
-        handleOpenModal={handleOpenModal}
-        handleCloseModal={handleCloseModal}
+        handleOpen={handleOpenModal}
+        handleClose={handleCloseModal}
         currentRoles={currentRoles}
         setCurrentRoles={setCurrentRoles}
       />
