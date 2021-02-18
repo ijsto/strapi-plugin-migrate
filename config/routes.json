@@ -39,14 +39,6 @@
       "config": {
         "policies": []
       }
-    },
-    {
-      "method": "GET",
-      "path": "/preferred-roles",
-      "handler": "spm-preferred-roles.find",
-      "config": {
-        "policies": []
-      }
     }
   ]
 }
