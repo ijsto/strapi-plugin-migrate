@@ -12,7 +12,6 @@ import { Padded } from '@buffetjs/core';
 import { ViewContainer, useGlobalContext } from 'strapi-helper-plugin';
 
 // import PropTypes from 'prop-types';
-import UserPermissions from '../../components/UserPermissions';
 import pluginId from '../../pluginId';
 import Sidebar from '../Sidebar';
 import getTrad from '../../utils/getTrad';

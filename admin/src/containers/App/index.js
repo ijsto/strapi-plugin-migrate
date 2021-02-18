@@ -8,7 +8,7 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 import React from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies
-import { Switch, Redirect, Route } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { NotFound } from 'strapi-helper-plugin';
 // Utils
