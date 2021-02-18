@@ -5,8 +5,9 @@ import { useGlobalContext } from 'strapi-helper-plugin';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import styled from 'styled-components';
 // eslint-disable-next-line import/no-extraneous-dependencies
-import { useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
+import basePluginUrl from '../../basePluginUrl';
 import getTrad from '../../utils/getTrad';
 
 const StyledSidebar = styled.div`
@@ -29,18 +30,32 @@ const StyledLink = styled.div`
 
 const Sidebar = () => {
   const { formatMessage } = useGlobalContext();
-  const { migrateType } = useParams();
 
   return (
     <StyledSidebar className="col-md-3">
-      <h2>Strapi Migrate</h2>
+      <Link to={basePluginUrl}>
+        <StyledLink>
+          {formatMessage({ id: getTrad(`Sidebar.link.dashboard`) })}
+        </StyledLink>
+      </Link>
 
-      <StyledLink active={migrateType === 'user-permissions'}>
-        {formatMessage({ id: getTrad(`Sidebar.link.userPermissions`) })}
-      </StyledLink>
-      <StyledLink>
-        {formatMessage({ id: getTrad(`Sidebar.link.content`) })} (coming soon)
-      </StyledLink>
+      <Link to={`${basePluginUrl}/user-permissions`}>
+        <StyledLink>
+          {formatMessage({ id: getTrad(`Sidebar.link.userPermissions`) })}
+        </StyledLink>
+      </Link>
+
+      <Link to={`${basePluginUrl}/collection-types`}>
+        <StyledLink>
+          {formatMessage({ id: getTrad(`Sidebar.link.collectionTypes`) })}
+        </StyledLink>
+      </Link>
+      
+      <div style={{ marginTop: 32}}>
+        <h4>
+          More coming soon!
+        </h4>
+      </div>
     </StyledSidebar>
   );
 };
