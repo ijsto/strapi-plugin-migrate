@@ -13,27 +13,33 @@ import { Switch, Redirect, Route } from 'react-router-dom';
 import { NotFound } from 'strapi-helper-plugin';
 // Utils
 import pluginId from '../../pluginId';
+import basePluginUrl from '../../basePluginUrl';
 
 // Containers
+import CollectionTypesPage from '../CollectionTypesPage';
 import HomePage from '../HomePage';
+import UserPermissionsPage from '../UserPermissionsPage';
 
 const App = () => {
   return (
     <div>
       <Switch>
         <Route
-          path={`/plugins/${pluginId}/:migrateType/:action`}
+          path={`${basePluginUrl}`}
           render={() => <HomePage />}
           exact
         />
-
+        
         <Route
-          path={`/plugins/${pluginId}`}
-          render={() => (
-            <Redirect to={`/plugins/${pluginId}/user-permissions/export`} />
-          )}
-          exact
+          path={`${basePluginUrl}/user-permissions`}
+          render={() => <UserPermissionsPage />}
         />
+        
+        <Route
+          path={`${basePluginUrl}/collection-types`}
+          render={() => <CollectionTypesPage />}
+        />
+        
         <Route component={NotFound} />
       </Switch>
     </div>
