@@ -5,40 +5,29 @@
  */
 
 // eslint-disable-next-line import/no-extraneous-dependencies
-import React, { memo } from 'react';
-// eslint-disable-next-line import/no-extraneous-dependencies
-import { Padded } from '@buffetjs/core';
-// eslint-disable-next-line import/no-extraneous-dependencies
-import { ViewContainer, useGlobalContext } from 'strapi-helper-plugin';
+import React from 'react';
+import { useGlobalContext } from 'strapi-helper-plugin';
 
 import CollectionTypes from '../../components/CollectionTypes';
-import pluginId from '../../pluginId';
-import Sidebar from '../Sidebar';
 import getTrad from '../../utils/getTrad';
+import PageContainer from '../../components/layout/PageContainer';
 
 const CollectionTypesPage = () => {
   const { formatMessage } = useGlobalContext();
+  const headerProps = {
+    content: formatMessage({
+      id: getTrad(`CollectionTypes.header.description`),
+    }),
+    title: {
+      label: formatMessage({ id: getTrad(`CollectionTypes.header.title`) }),
+    },
+  };
 
   return (
-    <ViewContainer className={pluginId}>
-      <div className="container-fluid">
-        <div className="row">
-          <Sidebar />
-
-          <div className="col-md-9">
-            <Padded top left right size="smd">
-              <h1>
-                {formatMessage({
-                  id: getTrad(`CollectionTypes.header.title`),
-                })}
-              </h1>
-              <CollectionTypes />
-            </Padded>
-          </div>
-        </div>
-      </div>
-    </ViewContainer>
+    <PageContainer headerProps={headerProps}>
+      <CollectionTypes />
+    </PageContainer>
   );
 };
 
-export default memo(CollectionTypesPage);
+export default CollectionTypesPage;
