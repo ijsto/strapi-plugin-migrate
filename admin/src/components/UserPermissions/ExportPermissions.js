@@ -56,8 +56,8 @@ const ExportPermissions = ({ currentRoles, setCurrentRoles }) => {
     <div>
       <h1>{formatMessage({ id: getTrad(`UserPermissions.export.title`) })}</h1>
       <div>
-        You will get a raw SQL query that you will be able to paste in another
-        environment (for example staging, production).
+      {formatMessage({ id: getTrad(`UserPermissions.export.description`) })}
+        
       </div>
       <BackUpModal
         isOpen={isModalOpen}

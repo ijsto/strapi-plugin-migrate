@@ -43,10 +43,12 @@ const ImportPermissions = () => {
   return (
     <div>
       <h1>
-        {/* @TODO: fix React Router so that could use :action and replace hard-coded "import" */}
-        {formatMessage({ id: getTrad(`UserPermissions.${'import'}.title`) })}
+        {formatMessage({ id: getTrad(`UserPermissions.import.title`) })}
       </h1>
-      <div>Paste in the raw SQL query of your User Permissions table</div>
+
+      <div>
+        {formatMessage({ id: getTrad(`UserPermissions.import.description`) })}
+        </div>
       <Row>
         <Textarea
           name="import-sql-string"
