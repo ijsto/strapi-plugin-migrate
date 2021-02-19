@@ -9,6 +9,7 @@ import Row from '../layout/Row';
 import FadedCard from '../data-display/FadedCard';
 import getTrad from '../../utils/getTrad';
 import ExportPermissionsText from './ExportPermissionsText';
+import ExportPermissionsFile from './ExportPermissionsFile';
 
 const StyledFadedCardFile = styled(FadedCard)`
   &:before {
@@ -57,14 +58,7 @@ const ExportPermissions = () => {
       <Flex>
         <ExportPermissionsText />
 
-        <StyledFadedCardFile>
-          <h3>Download a file</h3>
-          <p>File downloads are coming soon.</p>
-
-          <strong>
-            <a href="https://github.com/ijsto/strapi-plugin-migrate/issues/6">Track the issue or create a PR here.</a>
-          </strong>
-        </StyledFadedCardFile>
+        <ExportPermissionsFile />
       </Flex>
     </div>
   );
