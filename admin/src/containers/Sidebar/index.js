@@ -53,7 +53,7 @@ const Sidebar = () => {
       
       <div style={{ marginTop: 32}}>
         <h4>
-          More coming soon!
+          Contribute 🚀
         </h4>
       </div>
     </StyledSidebar>
