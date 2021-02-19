@@ -43,6 +43,11 @@ const StyledNotice = styled.div`
   .cta {
     flex: 1;
     text-align: right;
+    span {
+      display: block;
+      font-size: 4em;
+      margin-right: 0.75em;
+    }
   }
 `;
 
@@ -88,16 +93,22 @@ const UserPermissions = () => {
     const camelCaseName = camelCase(tabName);
 
     return {
-      tabName,
-      to: `${basePluginUrl}/user-permissions/${name}`,
-
       name: formatMessage({
         id: getTrad(`UserPermissions.HeaderNav.link.${camelCaseName}`),
       }),
+      tabName,
+      to: `${basePluginUrl}/user-permissions/${name}`,
     };
   });
 
-  const twitterShareLink = `https://twitter.com/intent/tweet?text=Just%20saved%20bunch%20of%20time%20with%20this%20awesome%20Strapi%20migration%20plugin!%20https%3A%2F%2Fwww.npmjs.com%2Fpackage%2Fstrapi-plugin-migrate`;
+  const encodedTwitterMessage = encodeURI(
+    formatMessage({ id: getTrad(`Social.share.twitter.text`) })
+  );
+  const twitterShareLink = `https://twitter.com/intent/tweet?text=${encodedTwitterMessage}`;
+
+  const backupNotice = formatMessage({
+    id: getTrad(`UserPermissions.info.backupNotice`),
+  });
 
   return (
     <>
@@ -108,48 +119,47 @@ const UserPermissions = () => {
         )}
         exact
       />
-      <div style={{ padding: '1.8rem 1.5rem' }}>
-        <StyledNotice>
-          <div className="body">
-            <h2>Back up</h2>
-            <div>
-              If you have a big database or even just for a good hygiene ang
-              general safety - you can back up your current settings.
-            </div>
-          </div>
-          <div className="cta">
-            <Button label="Back up now" onClick={handleOpenModal} />
-          </div>
-        </StyledNotice>
 
-        <HeaderNav links={tabs} style={{ marginTop: '1.6rem' }} />
-        <Route
-          path={`${basePluginUrl}/:migrateType/:action`}
-          render={props => <ImportExportTool {...props} />}
-          exact
-        />
+      <StyledNotice>
+        <div className="body">
+          <h2>Back up</h2>
+          <div>{backupNotice}</div>
+        </div>
+        <div className="cta">
+          <span role="img" aria-label="Rocket-launch">
+            🚀
+          </span>
+          <Button label="Back up now" onClick={handleOpenModal} />
+        </div>
+      </StyledNotice>
 
-        <StyledInfoHeader>
-          <div />
-          <div className="info">
-            <h3>Saved time?</h3>
-            <div>If this plugin helped you save some time and hassle.</div>
-            <StyledButtonLink
-              target="_blank"
-              rel="noreferrer noopener"
-              href={twitterShareLink}
-            >
-              Share it with others!
-            </StyledButtonLink>
-          </div>
-        </StyledInfoHeader>
-        <BackUpModal
-          isOpen={isModalOpen}
-          setOpen={setModalOpen}
-          handleOpen={handleOpenModal}
-          handleClose={handleCloseModal}
-        />
-      </div>
+      <HeaderNav links={tabs} style={{ marginTop: '1.6rem' }} />
+      <Route
+        path={`${basePluginUrl}/:migrateType/:action`}
+        render={props => <ImportExportTool {...props} />}
+        exact
+      />
+
+      <StyledInfoHeader>
+        <div />
+        <div className="info">
+          <h3>Saved time?</h3>
+          <div>If this plugin helped you save some time and hassle.</div>
+          <StyledButtonLink
+            target="_blank"
+            rel="noreferrer noopener"
+            href={twitterShareLink}
+          >
+            Share it with others!
+          </StyledButtonLink>
+        </div>
+      </StyledInfoHeader>
+      <BackUpModal
+        isOpen={isModalOpen}
+        setOpen={setModalOpen}
+        handleOpen={handleOpenModal}
+        handleClose={handleCloseModal}
+      />
     </>
   );
 };
