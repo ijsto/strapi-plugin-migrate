@@ -143,7 +143,7 @@ const UserPermissions = () => {
       <StyledInfoHeader>
         <div />
         <div className="info">
-          <h3>Saved time?</h3>
+          <h3>Saved some time?</h3>
           <div>If this plugin helped you save some time and hassle.</div>
           <StyledButtonLink
             target="_blank"

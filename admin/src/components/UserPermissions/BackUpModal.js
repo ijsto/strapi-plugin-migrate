@@ -5,7 +5,7 @@ import { Modal, ModalFooter, ModalHeader } from 'strapi-helper-plugin';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { Button, Padded } from '@buffetjs/core';
 
-import BackUpExporter from '../BackUpExporter';
+import BackUpExporter from './BackUpExporter';
 
 const BackUpModal = ({ isOpen, setOpen, handleClose }) => {
   const handleToggle = () => {
