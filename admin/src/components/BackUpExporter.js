@@ -1,5 +1,5 @@
 /* eslint-disable import/no-extraneous-dependencies */
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { request } from 'strapi-helper-plugin';
 import { Button, Padded } from '@buffetjs/core';
 
@@ -40,8 +40,12 @@ const BackUpExporter = () => {
   const handleCopy = () => {
     navigator.clipboard.writeText(retrievedBackUpString);
     setCopySuccess(true);
-    setTimeout(() => setCopySuccess(false), 1500);
+    setTimeout(() => setCopySuccess(false), 2000);
   };
+
+  useEffect(() => {
+    handleRetrieveBackUp()
+  },[])
 
   return (
     <div>
@@ -58,13 +62,6 @@ const BackUpExporter = () => {
         )}
 
         <Row>
-          <Button
-            disabled={loadingRetrieve}
-            isLoading={loadingRetrieve}
-            onClick={handleRetrieveBackUp}
-            label="Get Back up"
-            style={{ marginRight: 10 }}
-          />
           {retrievedBackUpString && (
             <Button
               color={copySuccess ? 'success' : 'primary'}
