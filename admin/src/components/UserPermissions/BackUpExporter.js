@@ -3,8 +3,8 @@ import React, { useEffect, useState } from 'react';
 import { request } from 'strapi-helper-plugin';
 import { Button, Padded } from '@buffetjs/core';
 
-import Row from './layout/Row';
-import ResultsContainer from './UserPermissions/ResultsContainer';
+import Row from '../layout/Row';
+import ResultsContainer from './ResultsContainer';
 
 const BackUpExporter = () => {
   const [retrievedBackUpString, setRetrievedBackUpString] = useState('');
