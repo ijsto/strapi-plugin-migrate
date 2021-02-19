@@ -5,6 +5,7 @@ import styled from 'styled-components';
 
 export const StyledResultContainer = styled.div`
   max-height: 100px;
+  opacity: 0.5;
   overflow: hidden;
   padding: 1rem;
   background: #fafafb;
