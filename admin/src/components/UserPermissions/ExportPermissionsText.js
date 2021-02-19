@@ -20,14 +20,12 @@ const ExportPermissionsText = () => {
   const [retrievedPostgresString, setRetrievedPostgresString] = useState('');
 
   const [loadingRetrieve, setLoadingRetrieve] = useState(false);
-  const [errorRetrieve, setErrorRetrieve] = useState(null);
 
   const [copySuccess, setCopySuccess] = useState(false);
 
   const [isShowMoreOpen, setShowMoreOpen] = useState(false);
 
   const handleRetrieve = async () => {
-    setErrorRetrieve(false);
     setLoadingRetrieve(true);
 
     try {
@@ -43,9 +41,7 @@ const ExportPermissionsText = () => {
         setLoadingRetrieve(false);
       }
     } catch (e) {
-      // eslint-disable-next-line no-console
-      console.log('Error: ', e);
-      setErrorRetrieve(true);
+      strapi.notification.error('Sorry, something went wrong.');
       setLoadingRetrieve(false);
     }
   };
@@ -79,17 +75,12 @@ const ExportPermissionsText = () => {
           />
         )}
       </Row>
-      {!errorRetrieve && retrievedPostgresString && !loadingRetrieve && (
+      {retrievedPostgresString && !loadingRetrieve && (
         <Row>
           <div style={{ color: '#28a745' }}>
             Permissions exported. Copy the below text into your import module in
             your destination app.
           </div>
-        </Row>
-      )}
-      {errorRetrieve && (
-        <Row>
-          <div style={{ color: '#dc3545' }}>Uh-oh! Something went wrong.</div>
         </Row>
       )}
 
@@ -113,8 +104,8 @@ const ExportPermissionsText = () => {
       {isShowMoreOpen && (
         <div style={{ paddingTop: 16 }}>
           <p>
-            This is less secure and may not be best suited for bigger projects, but can
-            be convenient for a quick-and-dirty migrations.
+            This is less secure and may not be best suited for bigger projects,
+            but can be convenient for a quick-and-dirty migrations.
           </p>
           <p>
             {formatMessage({

@@ -9,18 +9,16 @@ import ResultsContainer from './ResultsContainer';
 const BackUpExporter = () => {
   const [retrievedBackUpString, setRetrievedBackUpString] = useState('');
   const [loadingRetrieve, setLoadingRetrieve] = useState(false);
-  const [errorRetrieve, setErrorRetrieve] = useState(null);
 
   const [copySuccess, setCopySuccess] = useState(false);
 
   const handleRetrieveBackUp = async () => {
-    setErrorRetrieve(false);
     setLoadingRetrieve(true);
 
     try {
       const response = await request('/migrate/backUpCurrentPermissions', {
-        method: 'POST',
         body: { type: 'postgres' },
+        method: 'POST',
       });
 
       if (response) {
@@ -30,9 +28,7 @@ const BackUpExporter = () => {
         setLoadingRetrieve(false);
       }
     } catch (e) {
-      // eslint-disable-next-line no-console
-      console.log('Error: ', e);
-      setErrorRetrieve(true);
+      strapi.notification.error('Sorry, something went wrong.');
       setLoadingRetrieve(false);
     }
   };
@@ -44,8 +40,8 @@ const BackUpExporter = () => {
   };
 
   useEffect(() => {
-    handleRetrieveBackUp()
-  },[])
+    handleRetrieveBackUp();
+  }, []);
 
   return (
     <div>
@@ -55,12 +51,6 @@ const BackUpExporter = () => {
       </div>
 
       <Padded top size="smd">
-        {errorRetrieve && (
-          <Row>
-            <div style={{ color: '#dc3545' }}>Uh-oh! Something went wrong.</div>
-          </Row>
-        )}
-
         <Row>
           {retrievedBackUpString && (
             <Button
