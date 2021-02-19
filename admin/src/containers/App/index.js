@@ -12,7 +12,7 @@ import { Switch, Route } from 'react-router-dom';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { NotFound } from 'strapi-helper-plugin';
 // Utils
-import pluginId from '../../pluginId';
+import Wrapper from './Wrapper';
 import basePluginUrl from '../../basePluginUrl';
 
 // Containers
@@ -22,7 +22,7 @@ import UserPermissionsPage from '../UserPermissionsPage';
 
 const App = () => {
   return (
-    <div>
+    <Wrapper>
       <Switch>
         <Route
           path={`${basePluginUrl}`}
@@ -42,7 +42,7 @@ const App = () => {
         
         <Route component={NotFound} />
       </Switch>
-    </div>
+    </Wrapper>
   );
 };
 
