@@ -4,7 +4,8 @@ import React from 'react';
 import styled from 'styled-components';
 
 export const StyledResultContainer = styled.div`
-  max-height: 200px;
+  max-height: 100px;
+  overflow: hidden;
   padding: 1rem;
   background: #fafafb;
   border: 1px solid lightgrey;
