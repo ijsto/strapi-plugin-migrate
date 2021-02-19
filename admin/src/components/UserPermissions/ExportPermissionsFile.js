@@ -25,7 +25,11 @@ const ExportPermissionsFile = () => {
       <p>File downloads are coming soon.</p>
 
       <strong>
-        <a href="https://github.com/ijsto/strapi-plugin-migrate/issues/6">
+        <a
+          target="_blank"
+          rel="noopener noreferrer"
+          href="https://github.com/ijsto/strapi-plugin-migrate/issues/6"
+        >
           Track the issue or create a PR here.
         </a>
       </strong>
@@ -48,8 +52,15 @@ const ExportPermissionsFile = () => {
         <div style={{ paddingTop: 16 }}>
           <p>
             Currently, file exports are not supported, but if you are interested
-            in taking on a challenge or simple would like to contribute, <a href="https://github.com/ijsto/strapi-plugin-migrate/issues/6">please
-            feel free to open a PR</a>.
+            in taking on a challenge or simple would like to contribute,{' '}
+            <a
+              target="_blank"
+              rel="noopener noreferrer"
+              href="https://github.com/ijsto/strapi-plugin-migrate/issues/6"
+            >
+              please feel free to open a PR
+            </a>
+            .
           </p>
         </div>
       )}
