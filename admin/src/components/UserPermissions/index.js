@@ -1,7 +1,7 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import React, { useState } from 'react';
 import { Route, Redirect } from 'react-router-dom';
-import { Button } from '@buffetjs/core';
+import { Button, Flex } from '@buffetjs/core';
 import { useGlobalContext, HeaderNav } from 'strapi-helper-plugin';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import styled from 'styled-components';
@@ -13,6 +13,7 @@ import { camelCase } from 'lodash';
 import getTrad from '../../utils/getTrad';
 import basePluginUrl from '../../basePluginUrl';
 import Spacer from '../layout/Spacer';
+import Notice from '../feedback/Notice';
 
 import BackUpModal from './BackUpModal';
 import ImportExportTool from './ImportExportTool';
@@ -28,28 +29,6 @@ const StyledInfoHeader = styled.div`
     background-color: var(--blue);
     color: var(--white);
     padding: 2rem;
-  }
-`;
-
-const StyledNotice = styled.div`
-  align-items: center;
-  background: rgba(0, 123, 255, 0.125);
-  border: 2px dashed var(--blue);
-  border-radius: 0.25rem;
-  display: flex;
-  justify-content: space-between;
-  padding: 2.5rem;
-  .body {
-    flex: 2;
-  }
-  .cta {
-    flex: 1;
-    text-align: right;
-    span {
-      display: block;
-      font-size: 4em;
-      margin-right: 0.75em;
-    }
   }
 `;
 
@@ -122,18 +101,25 @@ const UserPermissions = () => {
         exact
       />
 
-      <StyledNotice>
-        <div className="body">
-          <h2>Back up</h2>
-          <div>{backupNotice}</div>
-        </div>
-        <div className="cta">
-          <span role="img" aria-label="Rocket-launch">
-            🚀
-          </span>
-          <Button label="Back up now" onClick={handleOpenModal} />
-        </div>
-      </StyledNotice>
+      <Notice>
+        <Flex justifyContent="space-between" alignItems="center">
+          <div style={{ marginRight: 32 }}>
+            <span
+              style={{ display: 'block', fontSize: 54 }}
+              role="img"
+              aria-label="Rocket-launch"
+            >
+              🚀
+            </span>
+            <Button label="Back up now" onClick={handleOpenModal} />
+          </div>
+
+          <div style={{ flex: 2 }}>
+            <h2>Back up</h2>
+            <div>{backupNotice}</div>
+          </div>
+        </Flex>
+      </Notice>
 
       <Spacer />
 
