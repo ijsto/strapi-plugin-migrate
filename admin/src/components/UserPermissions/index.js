@@ -9,10 +9,12 @@ import styled from 'styled-components';
 import { camelCase } from 'lodash';
 
 // eslint-disable-next-line import/no-extraneous-dependencies
+
 import getTrad from '../../utils/getTrad';
+import basePluginUrl from '../../basePluginUrl';
+import Spacer from '../layout/Spacer';
 
 import BackUpModal from './BackUpModal';
-import basePluginUrl from '../../basePluginUrl';
 import ImportExportTool from './ImportExportTool';
 
 const StyledInfoHeader = styled.div`
@@ -132,6 +134,8 @@ const UserPermissions = () => {
           <Button label="Back up now" onClick={handleOpenModal} />
         </div>
       </StyledNotice>
+
+      <Spacer />
 
       <HeaderNav links={tabs} style={{ marginTop: '1.6rem' }} />
       <Route
