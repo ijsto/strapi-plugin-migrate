@@ -7,38 +7,25 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 import React, { memo } from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies
-import { Padded } from '@buffetjs/core';
-// eslint-disable-next-line import/no-extraneous-dependencies
-import { ViewContainer, useGlobalContext } from 'strapi-helper-plugin';
+import { useGlobalContext } from 'strapi-helper-plugin';
 
 // import PropTypes from 'prop-types';
-import UserPermissions from '../../components/UserPermissions';
-import pluginId from '../../pluginId';
-import Sidebar from '../Sidebar';
 import getTrad from '../../utils/getTrad';
+import PageContainer from '../../components/layout/PageContainer';
+
+import UserPermissions from '../../components/UserPermissions';
 
 const UserPermissionsPage = () => {
   const { formatMessage } = useGlobalContext();
+  const headerProps = {
+    content: formatMessage({ id: getTrad(`UserPermissions.header.description`) }),
+    title: { label: formatMessage({ id: getTrad(`UserPermissions.header.title`) }) },
+  };
 
   return (
-    <ViewContainer className={pluginId}>
-      <div className="container-fluid">
-        <div className="row">
-          <Sidebar />
-
-          <div className="col-md-9">
-            <Padded top left right size="smd">
-              <h1>
-                {formatMessage({
-                  id: getTrad(`UserPermissions.header.title`),
-                })}
-              </h1>
-              <UserPermissions />
-            </Padded>
-          </div>
-        </div>
-      </div>
-    </ViewContainer>
+    <PageContainer headerProps={headerProps}>
+      <UserPermissions />
+    </PageContainer>
   );
 };
 
