@@ -1,14 +1,23 @@
 /* eslint-disable import/no-extraneous-dependencies */
+import styled from 'styled-components';
+/* eslint-disable import/no-extraneous-dependencies */
 import React, { useState } from 'react';
-import { Button } from '@buffetjs/core';
 import { useGlobalContext, request } from 'strapi-helper-plugin';
 
+import Flex from '../layout/Flex';
 import Row from '../layout/Row';
-import BackUpModal from './BackUpModal';
+import FadedCard from '../data-display/FadedCard';
 import getTrad from '../../utils/getTrad';
-import ResultsContainer from './ResultsContainer';
+import ExportPermissionsText from './ExportPermissionsText';
 
-const ExportPermissions = ({ currentRoles, setCurrentRoles }) => {
+const StyledFadedCardFile = styled(FadedCard)`
+  &:before {
+    content: '\f56d';
+    color: #adadad;
+  }
+`;
+
+const ExportPermissions = () => {
   const { formatMessage } = useGlobalContext();
   const [retrievedPostgresString, setRetrievedPostgresString] = useState('');
 
@@ -16,8 +25,6 @@ const ExportPermissions = ({ currentRoles, setCurrentRoles }) => {
   const [errorRetrieve, setErrorRetrieve] = useState(null);
 
   const [copySuccess, setCopySuccess] = useState(false);
-
-  const [isModalOpen, setModalOpen] = useState(false);
 
   const handleRetrieve = async () => {
     setErrorRetrieve(false);
@@ -43,64 +50,22 @@ const ExportPermissions = ({ currentRoles, setCurrentRoles }) => {
     }
   };
 
-  const handleCopy = () => {
-    navigator.clipboard.writeText(retrievedPostgresString);
-    setCopySuccess(true);
-    setTimeout(() => setCopySuccess(false), 1500);
-  };
-
-  const handleOpenModal = () => setModalOpen(true);
-  const handleCloseModal = () => setModalOpen(false);
-
   return (
     <div>
       <h1>{formatMessage({ id: getTrad(`UserPermissions.export.title`) })}</h1>
-      <div>
-      {formatMessage({ id: getTrad(`UserPermissions.export.description`) })}
-        
-      </div>
-      <BackUpModal
-        isOpen={isModalOpen}
-        setOpen={setModalOpen}
-        handleOpen={handleOpenModal}
-        handleClose={handleCloseModal}
-        currentRoles={currentRoles}
-        setCurrentRoles={setCurrentRoles}
-      />
-      <Row>
-        <Button
-          disabled={loadingRetrieve}
-          isLoading={loadingRetrieve}
-          label="Export now"
-          onClick={handleRetrieve}
-          style={{ marginRight: 10 }}
-        />
-        {retrievedPostgresString && (
-          <Button
-            color={copySuccess ? 'success' : 'primary'}
-            label={copySuccess ? 'Copied!' : 'Copy Data'}
-            onClick={handleCopy}
-          />
-        )}
-      </Row>
 
-      {!errorRetrieve && retrievedPostgresString && !loadingRetrieve && (
-        <Row>
-          <div style={{ color: '#28a745' }}>
-            Permissions exported. Copy the below text into your import module in
-            your destination app.
-          </div>
-        </Row>
-      )}
-      {errorRetrieve && (
-        <Row>
-          <div style={{ color: '#dc3545' }}>Uh-oh! Something went wrong.</div>
-        </Row>
-      )}
+      <Flex>
+        <ExportPermissionsText />
 
-      {retrievedPostgresString && (
-        <ResultsContainer>{retrievedPostgresString}</ResultsContainer>
-      )}
+        <StyledFadedCardFile>
+          <h3>Download a file</h3>
+          <p>File downloads are coming soon.</p>
+
+          <strong>
+            <a href="https://github.com/ijsto/strapi-plugin-migrate/issues/6">Track the issue or create a PR here.</a>
+          </strong>
+        </StyledFadedCardFile>
+      </Flex>
     </div>
   );
 };
