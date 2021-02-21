@@ -31,7 +31,7 @@ const ExportPermissionsFile = () => {
     if (!isConfirmed) return null;
 
     try {
-      const collections = await request(`/migrate/getCollectionTypeData`);
+      const collections = await request(`/migrate/downloadContent`);
       const sanitizedCollections = collections.filter(collection => collection);
 
       const file = sanitizedCollections.reduce(

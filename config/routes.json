@@ -18,16 +18,24 @@
     },
     {
       "method": "GET",
-      "path": "/getCollectionTypeData",
-      "handler": "spm-file-export-permissions.getCollectionTypeData",
+      "path": "/exportRolesAndPermissions",
+      "handler": "spm-file-export-permissions.exportRolesAndPermissions",
       "config": {
         "policies": []
       }
     },
     {
       "method": "POST",
-      "path": "/fileImportCollections",
-      "handler": "spm-file-import-content.fileImportCollections",
+      "path": "/uploadPermissions",
+      "handler": "spm-file-import-permissions.uploadPermissions",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/uploadContent",
+      "handler": "spm-file-import-content.uploadContent",
       "config": {
         "policies": []
       }

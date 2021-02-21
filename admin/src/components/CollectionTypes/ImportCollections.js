@@ -19,7 +19,7 @@ const ImportCollections = () => {
 
     try {
       strapi.lockApp();
-      await request(`/migrate/fileImportCollections`, {
+      await request(`/migrate/uploadContent`, {
         method: 'POST',
         body: {
           collectionTypes: fileForUpload,
