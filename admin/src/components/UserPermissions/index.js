@@ -5,15 +5,16 @@ import { Button, Flex } from '@buffetjs/core';
 import { useGlobalContext, HeaderNav } from 'strapi-helper-plugin';
 import { camelCase } from 'lodash';
 
-import basePluginUrl from '../../basePluginUrl';
+import SocialShare from '../common/SocialShare';
+import Box from '../layout/Box';
 import Spacer from '../layout/Spacer';
 import Notice from '../feedback/Notice';
 
+import basePluginUrl from '../../basePluginUrl';
 import getTrad from '../../utils/getTrad';
 
 import BackUpModal from './BackUpModal';
 import ImportExportTool from './ImportExportTool';
-import SocialShare from '../common/SocialShare';
 
 const UserPermissions = () => {
   const [isModalOpen, setModalOpen] = useState(false);
@@ -79,7 +80,9 @@ const UserPermissions = () => {
         exact
       />
 
-      <SocialShare />
+      <Box my="20px">
+        <SocialShare />
+      </Box>
       <BackUpModal
         isOpen={isModalOpen}
         setOpen={setModalOpen}

@@ -1,10 +1,11 @@
 import React from 'react';
 
+import SocialShare from '../common/SocialShare';
+import Box from '../layout/Box';
 import Grid from '../layout/Grid';
 
 import CollectionTypeStats from './CollectionTypeStats';
 import UserPermissionStats from './UserPermissionStats';
-import Box from '../layout/Box';
 
 const Dashboard = () => {
   return (
@@ -16,6 +17,10 @@ const Dashboard = () => {
           <UserPermissionStats />
 
           <CollectionTypeStats />
+
+          <Box my="20px">
+            <SocialShare />
+          </Box>
         </Grid>
       </Box>
     </>
