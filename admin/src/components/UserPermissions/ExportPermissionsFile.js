@@ -2,10 +2,11 @@ import styled from 'styled-components';
 import React, { useState } from 'react';
 import { useGlobalContext } from 'strapi-helper-plugin';
 
-import FadedCard from '../data-display/FadedCard';
+import CardWidget from '../data-display/CardWidget';
 import getTrad from '../../utils/getTrad';
 
-const StyledFadedCardFile = styled(FadedCard)`
+const StyledCardWidgetFile = styled(CardWidget)`
+  margin-left: 2.5rem;
   &:before {
     content: '\f56d';
     color: #adadad;
@@ -20,7 +21,7 @@ const ExportPermissionsFile = () => {
   const handleCloseShowMore = () => setShowMoreOpen(false);
 
   return (
-    <StyledFadedCardFile>
+    <StyledCardWidgetFile variant="accent">
       <h3>Download a file</h3>
       <p>File downloads are coming soon.</p>
 
@@ -64,7 +65,7 @@ const ExportPermissionsFile = () => {
           </p>
         </div>
       )}
-    </StyledFadedCardFile>
+    </StyledCardWidgetFile>
   );
 };
 

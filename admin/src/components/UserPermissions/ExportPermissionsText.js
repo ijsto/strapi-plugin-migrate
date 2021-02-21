@@ -4,11 +4,11 @@ import { Button } from '@buffetjs/core';
 import { useGlobalContext, request } from 'strapi-helper-plugin';
 
 import Row from '../layout/Row';
-import FadedCard from '../data-display/FadedCard';
+import CardWidget from '../data-display/CardWidget';
 import getTrad from '../../utils/getTrad';
 import ResultsContainer from './ResultsContainer';
 
-const StyledFadedCardText = styled(FadedCard)`
+const StyledCardWidgetText = styled(CardWidget)`
   &:before {
     content: '\f036';
     color: #adadad;
@@ -56,7 +56,7 @@ const ExportPermissionsText = () => {
   const handleCloseShowMore = () => setShowMoreOpen(false);
 
   return (
-    <StyledFadedCardText>
+    <StyledCardWidgetText variant="accent">
       <h3>Export as text</h3>
 
       <Row>
@@ -114,7 +114,7 @@ const ExportPermissionsText = () => {
           </p>
         </div>
       )}
-    </StyledFadedCardText>
+    </StyledCardWidgetText>
   );
 };
 

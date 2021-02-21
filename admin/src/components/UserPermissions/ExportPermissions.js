@@ -1,7 +1,7 @@
 import React from 'react';
 import { useGlobalContext } from 'strapi-helper-plugin';
+import { Flex } from '@buffetjs/core';
 
-import Flex from '../layout/Flex';
 import getTrad from '../../utils/getTrad';
 import ExportPermissionsText from './ExportPermissionsText';
 import ExportPermissionsFile from './ExportPermissionsFile';
