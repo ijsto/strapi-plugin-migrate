@@ -26,6 +26,10 @@ const ImportPermissionsText = () => {
 
       if (response.success) {
         strapi.notification.toggle({
+          link: {
+            label: "Go to Roles",
+            url: "/admin/settings/users-permissions/roles",
+          },
           message: 'User permissions exported successfully.',
           timeout: 3500,
           title: 'Woohoo! 🥳',

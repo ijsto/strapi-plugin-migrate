@@ -25,6 +25,10 @@ const ImportPermissionsFile = () => {
         },
       });
       strapi.notification.toggle({
+        link: {
+          label: "Go to Roles",
+          url: "/admin/settings/users-permissions/roles",
+        },
         message: 'User permissions were successfully imported.',
         timeout: 3500,
         title: 'Permissions updated! 🥳',
