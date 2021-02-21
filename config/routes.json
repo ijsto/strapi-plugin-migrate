@@ -18,6 +18,14 @@
     },
     {
       "method": "GET",
+      "path": "/getPermissions",
+      "handler": "spm-file-export-permissions.getPermissions",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
       "path": "/getPermissionsJSON",
       "handler": "spm-file-export-permissions.getPermissionsJSON",
       "config": {

@@ -21,6 +21,37 @@ module.exports = {
       message: 'ok',
     });
   },
+  getPermissions: async ctx => {
+    const { user } = ctx.state;
+    const service =
+      strapi.plugins['users-permissions'].services.userspermissions;
+
+    const [roles, plugins] = await Promise.all([
+      service.getRoles(),
+      service.getPlugins(),
+    ]);
+
+    const rolesWithPermissions = await Promise.all(
+      roles.map(async role => service.getRole(role.id, plugins))
+    );
+
+    const sanitizedRolesArray = rolesWithPermissions.map(role =>
+      sanitizeEntity(role, {
+        model: strapi.plugins['users-permissions'].models.role,
+      })
+    );
+
+    const formattedPermissions = sanitizedRolesArray.map(role => {
+      const sanitizedPermission = {
+        description: role.description,
+        name: role.name,
+        type: role.type,
+      }
+      return sanitizedPermission
+    })
+
+    return formattedPermissions;
+  },
   getPermissionsJSON: async ctx => {
     const { user } = ctx.state;
     const service =
