@@ -12,6 +12,7 @@ import { useGlobalContext } from 'strapi-helper-plugin';
 // import PropTypes from 'prop-types';
 import getTrad from '../../utils/getTrad';
 import PageContainer from '../../components/layout/PageContainer';
+import Dashboard from '../../components/Dashboard';
 
 
 const HomePage = () => {
@@ -23,7 +24,7 @@ const HomePage = () => {
 
   return (
     <PageContainer headerProps={headerProps}>
-      <div>Strapi Migrate Dashboard</div>
+      <Dashboard />
     </PageContainer>
   );
 };
