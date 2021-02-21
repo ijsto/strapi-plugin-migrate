@@ -1,9 +1,12 @@
 import React from 'react';
 import { Button } from '@buffetjs/core';
+import { Link } from 'react-router-dom';
 
 import Box from '../layout/Box';
 import Card from '../data-display/Card';
 import CardInfoList from '../data-display/CardInfoList';
+
+import basePluginUrl from '../../basePluginUrl';
 
 const UserPermissionStats = () => {
   const infoList = [
@@ -17,7 +20,9 @@ const UserPermissionStats = () => {
       <Box my="20px">
         <CardInfoList list={infoList} />
 
-        <Button>Migrate Permissions</Button>
+        <Link to={`${basePluginUrl}/user-permissions`}>
+          <Button>Migrate Permissions</Button>
+        </Link>
       </Box>
     </Card>
   );
