@@ -6,7 +6,7 @@ import { useGlobalContext, request } from 'strapi-helper-plugin';
 import Box from '../layout/Box';
 import Row from '../layout/Row';
 import getTrad from '../../utils/getTrad';
-import readFile from '../../utils/readFile';
+import readJsonFromFile from '../../utils/readJsonFromFile';
 
 const ImportCollections = () => {
   const { formatMessage } = useGlobalContext();
@@ -44,7 +44,7 @@ const ImportCollections = () => {
           onChange={e => {
             const droppedFiles = e.target.files[0];
             if (droppedFiles) {
-              readFile(droppedFiles, (value, fileName) => {
+              readJsonFromFile(droppedFiles, (value, fileName) => {
                 setFileForUpload(value);
               });
             } else {

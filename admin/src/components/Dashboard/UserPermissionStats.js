@@ -9,13 +9,11 @@ import CardInfoList from '../data-display/CardInfoList';
 import basePluginUrl from '../../basePluginUrl';
 
 const UserPermissionStats = () => {
-  const infoList = [
-    { label: 'Total Roles', value: '??' },
-  ];
+  const infoList = [{ label: 'Total Roles', value: '??' }];
 
   return (
     <Card padding="0 20px">
-      <h3 style={{marginTop: 16}}>User Permissions</h3>
+      <h3 style={{ marginTop: 16 }}>User Permissions</h3>
 
       <Box my="20px">
         <CardInfoList list={infoList} />
