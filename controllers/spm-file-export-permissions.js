@@ -28,7 +28,7 @@ module.exports = {
 
     // Administrator role ID by default is 1, so we check for admin rights.
     if (user.roles[0].id !== 1) {
-      return ctx.unauthorized('You must be admin to complete the export.');
+      return ctx.unauthorized('You must be an admin to export permissions.');
     }
 
     const [roles, plugins] = await Promise.all([
