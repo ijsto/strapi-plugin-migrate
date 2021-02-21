@@ -26,8 +26,9 @@ module.exports = {
     const service =
       strapi.plugins['users-permissions'].services.userspermissions;
 
-    if (user.roles[0].id != 1) {
-      return ctx.unauthorized('You must be admin to access this resource!');
+    // Administrator role ID by default is 1, so we check for admin rights.
+    if (user.roles[0].id !== 1) {
+      return ctx.unauthorized('You must be admin to complete the export.');
     }
 
     const [roles, plugins] = await Promise.all([
@@ -36,24 +37,28 @@ module.exports = {
     ]);
 
     const rolesWithPermissions = await Promise.all(
-      roles.map(async role => await service.getRole(role.id, plugins))
+      roles.map(async role => service.getRole(role.id, plugins))
     );
 
-    const sanitizedRolesWithPermissions = rolesWithPermissions
-      .map(role =>
-        sanitizeEntity(role, {
-          model: strapi.plugins['users-permissions'].models.role,
-        })
-      )
-      .reduce((roles, role) => {
-        delete role.users;
+    const sanitizedRolesArray = rolesWithPermissions.map(role =>
+      sanitizeEntity(role, {
+        model: strapi.plugins['users-permissions'].models.role,
+      })
+    );
+
+    const formattedRolesJson = sanitizedRolesArray.reduce(
+      (accumulatedRoles, role) => {
+        // We remove id because the IDs may differ between environments.
+        // We use role.name to identify a given role.
         delete role.id;
         delete role.created_by;
         delete role.updated_by;
-        roles[role.name] = role;
-        return roles;
-      });
+        accumulatedRoles[role.name] = role;
+        return accumulatedRoles;
+      },
+      {}
+    );
 
-    return sanitizedRolesWithPermissions;
+    return formattedRolesJson;
   },
 };
