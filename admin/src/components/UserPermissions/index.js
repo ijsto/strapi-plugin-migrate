@@ -3,63 +3,17 @@ import React, { useState } from 'react';
 import { Route, Redirect } from 'react-router-dom';
 import { Button, Flex } from '@buffetjs/core';
 import { useGlobalContext, HeaderNav } from 'strapi-helper-plugin';
-// eslint-disable-next-line import/no-extraneous-dependencies
-import styled from 'styled-components';
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { camelCase } from 'lodash';
 
-// eslint-disable-next-line import/no-extraneous-dependencies
-
-import getTrad from '../../utils/getTrad';
 import basePluginUrl from '../../basePluginUrl';
 import Spacer from '../layout/Spacer';
 import Notice from '../feedback/Notice';
 
+import getTrad from '../../utils/getTrad';
+
 import BackUpModal from './BackUpModal';
 import ImportExportTool from './ImportExportTool';
-
-const StyledInfoHeader = styled.div`
-  display: grid;
-  grid-template-columns: 2fr 1fr;
-  grid-gap: 2rem;
-  margin: 1rem 0;
-  padding: 1rem 0;
-  .info {
-    border-radius: 0.25rem;
-    background-color: var(--blue);
-    color: var(--white);
-    padding: 2rem;
-  }
-`;
-
-const StyledButtonLink = styled.a`
-  align-items: flex-start;
-  background-color: #6dbb1a;
-  border: 1px solid #6dbb1a;
-  border-radius: 2px;
-  color: var(--white);
-  cursor: pointer;
-  display: inline-block;
-  font-weight: 600;
-  font-size: 1.3rem;
-  height: 30px;
-  letter-spacing: normal;
-  line-height: normal;
-  margin-top: 20px;
-  min-width: 140px;
-  outline: 0;
-  padding: 5px 15px 2px;
-  text-transform: none;
-  text-indent: 0px;
-  text-shadow: none;
-  text-align: center;
-  touch-action: manipulation;
-  word-spacing: normal;
-  &:hover {
-    color: var(--white);
-    text-decoration: none;
-  }
-`;
+import SocialShare from '../common/SocialShare';
 
 const UserPermissions = () => {
   const [isModalOpen, setModalOpen] = useState(false);
@@ -81,11 +35,6 @@ const UserPermissions = () => {
       to: `${basePluginUrl}/user-permissions/${name}`,
     };
   });
-
-  const encodedTwitterMessage = encodeURI(
-    formatMessage({ id: getTrad(`Social.share.twitter.text`) })
-  );
-  const twitterShareLink = `https://twitter.com/intent/tweet?text=${encodedTwitterMessage}`;
 
   const backupNotice = formatMessage({
     id: getTrad(`UserPermissions.info.backupNotice`),
@@ -130,20 +79,7 @@ const UserPermissions = () => {
         exact
       />
 
-      <StyledInfoHeader>
-        <div />
-        <div className="info">
-          <h3>Saved some time?</h3>
-          <div>If this plugin helped you save some time and hassle.</div>
-          <StyledButtonLink
-            target="_blank"
-            rel="noreferrer noopener"
-            href={twitterShareLink}
-          >
-            Share it with others!
-          </StyledButtonLink>
-        </div>
-      </StyledInfoHeader>
+      <SocialShare />
       <BackUpModal
         isOpen={isModalOpen}
         setOpen={setModalOpen}
