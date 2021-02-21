@@ -21,7 +21,7 @@ module.exports = {
       message: 'ok',
     });
   },
-  downloadPermissions: async ctx => {
+  getPermissionsJSON: async ctx => {
     const { user } = ctx.state;
     const service =
       strapi.plugins['users-permissions'].services.userspermissions;

@@ -24,7 +24,7 @@ const ExportPermissionsFile = () => {
 
   const handlePermissionsExport = async () => {
     try {
-      const userRoles = await request(`/migrate/downloadPermissions`);
+      const userRoles = await request(`/migrate/getPermissionsJSON`);
       downloadNamedJson(userRoles, 'user-permissions-strapi-migrate');
       strapi.notification.toggle({
         message: 'User permissions exported successfully.',

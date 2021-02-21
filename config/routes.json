@@ -18,24 +18,24 @@
     },
     {
       "method": "GET",
-      "path": "/downloadPermissions",
-      "handler": "spm-file-export-permissions.downloadPermissions",
+      "path": "/getPermissionsJSON",
+      "handler": "spm-file-export-permissions.getPermissionsJSON",
       "config": {
         "policies": []
       }
     },
     {
       "method": "POST",
-      "path": "/uploadPermissions",
-      "handler": "spm-file-import-permissions.uploadPermissions",
+      "path": "/uploadPermissionsJSON",
+      "handler": "spm-file-import-permissions.uploadPermissionsJSON",
       "config": {
         "policies": []
       }
     },
     {
       "method": "POST",
-      "path": "/uploadContent",
-      "handler": "spm-file-import-content.uploadContent",
+      "path": "/uploadContentJSON",
+      "handler": "spm-file-import-content.uploadContentJSON",
       "config": {
         "policies": []
       }

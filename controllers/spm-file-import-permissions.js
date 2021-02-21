@@ -33,7 +33,7 @@ module.exports = {
       message: 'ok',
     });
   },
-  uploadPermissions: async ctx => {
+  uploadPermissionsJSON: async ctx => {
     const { rolesAndPermissions } = ctx.request.body;
     const { user } = ctx.state;
 

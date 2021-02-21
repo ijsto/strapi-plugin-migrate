@@ -21,7 +21,7 @@ module.exports = {
       message: 'ok',
     });
   },
-  uploadContent: async ctx => {
+  uploadContentJSON: async ctx => {
     // @NOTE: This controller is work in progress.
     // To track progress/contribute/submit a PR
     // visit this github link: https://github.com/ijsto/strapi-plugin-migrate/issues/6
