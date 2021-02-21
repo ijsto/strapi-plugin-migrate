@@ -16,7 +16,7 @@
   "UserPermissions.import.title": "Import Permissions",
   "UserPermissions.import.description": "Paste in the exported SQL string. Depending on the size of your application this may take some minutes.",
   "UserPermissions.export.title": "Export Permissions",
-  "UserPermissions.export.description": "You will get a raw SQL string (a long text) that you will need to paste in the target environment (for example staging, production) in the \"Import\" tab to the right. Depending on the size of your app this make take some minutes.",
+  "UserPermissions.export.description": "Click on \"Export as text\", then copy the SQL Query string in the textarea, then go to your destination environment Strapi app and paste it into the \"Import\" tab to the right. Depending on the size of your app this make take some time.",
   "UserPermissions.HeaderNav.link.import": "Import",
   "UserPermissions.HeaderNav.link.export": "Export",
   "notification.error.userPermissions.retrieveSql": "An error occurred while trying to export user permissions",
