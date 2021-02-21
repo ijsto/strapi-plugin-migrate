@@ -66,7 +66,7 @@ const CollectionTypes = () => {
             <div>
               <p>
                 Collection Type migrations are currently not supported. It is a
-                top priority, and Strapi Plugin Migrate will not the Beta land
+                top priority, and Strapi Plugin Migrate will not leave the Beta-land
                 before this is implemented.
               </p>
 
