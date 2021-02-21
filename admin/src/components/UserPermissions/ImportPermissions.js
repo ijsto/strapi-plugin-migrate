@@ -11,9 +11,9 @@ const ImportPermissions = () => {
   return (
     <div>
       <Flex>
-        <ImportPermissionsText />
-
         <ImportPermissionsFile />
+
+        <ImportPermissionsText />
       </Flex>
     </div>
   );

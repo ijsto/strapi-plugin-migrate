@@ -1,6 +1,6 @@
 import React from 'react';
 import { useGlobalContext } from 'strapi-helper-plugin';
-import { Flex } from '@buffetjs/core';
+import { Flex, Padded } from '@buffetjs/core';
 
 import getTrad from '../../utils/getTrad';
 import ExportPermissionsText from './ExportPermissionsText';
@@ -15,9 +15,11 @@ const ExportPermissions = () => {
       <h1>{formatMessage({ id: getTrad(`UserPermissions.export.title`) })}</h1>
 
       <Flex>
-        <ExportPermissionsText />
-
         <ExportPermissionsFile />
+
+        <Padded right size="smd" />
+
+        <ExportPermissionsText />
       </Flex>
     </div>
   );

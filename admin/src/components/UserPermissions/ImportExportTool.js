@@ -1,5 +1,4 @@
-/* eslint-disable import/no-extraneous-dependencies */
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
 import ImportPermissions from './ImportPermissions';
@@ -17,15 +16,10 @@ const ImportExportTool = ({
     params: { action },
   },
 }) => {
-  const [currentRoles, setCurrentRoles] = useState();
-
   return (
     <StyledContainer>
       {action === 'export' ? (
-        <ExportPermissions
-          currentRoles={currentRoles}
-          setCurrentRoles={setCurrentRoles}
-        />
+        <ExportPermissions />
       ) : (
         <ImportPermissions />
       )}

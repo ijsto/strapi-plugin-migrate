@@ -9,7 +9,6 @@ import CardWidget from '../data-display/CardWidget';
 import downloadNamedJson from '../../utils/downloadNamedJson';
 
 const StyledCardWidgetFile = styled(CardWidget)`
-  margin-left: 2.5rem;
   &:before {
     content: '\f56d';
     color: #adadad;
