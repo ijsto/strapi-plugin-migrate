@@ -22,7 +22,7 @@ const ExportPermissionsFile = () => {
   const handleOpenShowMore = () => setShowMoreOpen(true);
   const handleCloseShowMore = () => setShowMoreOpen(false);
 
-  const handlePermissionsExport = async () => {
+  const handlePermissionsDownload = async () => {
     try {
       const userRoles = await request(`/migrate/getPermissionsJSON`);
       downloadNamedJson(userRoles, 'user-permissions-strapi-migrate');
@@ -51,7 +51,7 @@ const ExportPermissionsFile = () => {
         <Button
           color="primary"
           label="Download "
-          onClick={handlePermissionsExport}
+          onClick={handlePermissionsDownload}
         />
       </Box>
 
