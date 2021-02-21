@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 const StyledCard = styled.div`
+  align-self: ${({ alignSelf }) => alignSelf || "baseline"};
   background-color: white;
   border-radius: 2px;
   box-shadow: 0 2px 4px #e3e9f3;
