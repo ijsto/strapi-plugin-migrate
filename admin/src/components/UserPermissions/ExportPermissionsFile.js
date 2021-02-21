@@ -1,9 +1,12 @@
 import styled from 'styled-components';
 import React, { useState } from 'react';
-import { useGlobalContext } from 'strapi-helper-plugin';
+import { request } from 'strapi-helper-plugin';
+import { Button } from '@buffetjs/core';
 
+import Box from '../layout/Box';
 import CardWidget from '../data-display/CardWidget';
-import getTrad from '../../utils/getTrad';
+
+import downloadNamedJson from '../../utils/downloadNamedJson';
 
 const StyledCardWidgetFile = styled(CardWidget)`
   margin-left: 2.5rem;
@@ -14,16 +17,43 @@ const StyledCardWidgetFile = styled(CardWidget)`
 `;
 
 const ExportPermissionsFile = () => {
-  const { formatMessage } = useGlobalContext();
   const [isShowMoreOpen, setShowMoreOpen] = useState(false);
 
   const handleOpenShowMore = () => setShowMoreOpen(true);
   const handleCloseShowMore = () => setShowMoreOpen(false);
 
+  const handlePermissionsExport = async () => {
+    try {
+      const userRoles = await request(`/migrate/exportRolesAndPermissions`);
+      downloadNamedJson(userRoles, 'user-permissions-strapi-migrate');
+      strapi.notification.toggle({
+        message: 'User permissions exported successfully.',
+        timeout: 3500,
+        title: 'Woohoo! 🥳',
+        type: 'success',
+      });
+    } catch (err) {
+      strapi.notification.toggle({
+        message: err.toString(),
+        timeout: 3500,
+        title: 'Holy guacamole!',
+        type: 'warning',
+      });
+    }
+  };
+
   return (
     <StyledCardWidgetFile variant="accent">
       <h3>Download a file</h3>
       <p>File downloads are coming soon.</p>
+
+      <Box my="20px" id="download">
+        <Button
+          color="primary"
+          label="Download "
+          onClick={handlePermissionsExport}
+        />
+      </Box>
 
       <strong>
         <a
