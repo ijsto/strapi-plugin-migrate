@@ -47,7 +47,7 @@ const CollectionTypeStats = () => {
     setLoadingRetrieve(true);
 
     try {
-      const response = await request('/migrate/listModels', {
+      const response = await request('/migrate/getModels', {
         method: 'GET',
       });
       setCollectionTypes(response);
