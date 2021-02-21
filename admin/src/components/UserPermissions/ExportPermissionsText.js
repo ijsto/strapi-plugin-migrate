@@ -3,8 +3,11 @@ import React, { useState } from 'react';
 import { Button } from '@buffetjs/core';
 import { useGlobalContext, request } from 'strapi-helper-plugin';
 
+import Notice from '../feedback/Notice';
+import Box from '../layout/Box';
 import Row from '../layout/Row';
 import CardWidget from '../data-display/CardWidget';
+
 import getTrad from '../../utils/getTrad';
 import ResultsContainer from './ResultsContainer';
 
@@ -63,7 +66,7 @@ const ExportPermissionsText = () => {
         <Button
           disabled={loadingRetrieve}
           isLoading={loadingRetrieve}
-          label="Export now"
+          label="Export as text"
           onClick={handleRetrieve}
           style={{ marginRight: 10 }}
         />
@@ -104,16 +107,30 @@ const ExportPermissionsText = () => {
       {isShowMoreOpen && (
         <div style={{ paddingTop: 16 }}>
           <p>
-            This is less secure and may not be best suited for bigger projects,
-            but can be convenient for a quick-and-dirty migrations.
-          </p>
-          <p>
             {formatMessage({
               id: getTrad(`UserPermissions.export.description`),
             })}
           </p>
         </div>
       )}
+
+      <Box>
+        <Notice>
+          Note: Currently only supported for Postgres DB.
+
+          <p>
+            <strong>
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                href="https://github.com/ijsto/strapi-plugin-migrate/issues/9"
+              >
+                Related issue on Github.
+              </a>
+            </strong>
+          </p>
+        </Notice>
+      </Box>
     </StyledCardWidgetText>
   );
 };
