@@ -9,6 +9,30 @@
       }
     },
     {
+      "method": "GET",
+      "path": "/getModels",
+      "handler": "spm-content-types.getModels",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/getCollectionTypeData",
+      "handler": "spm-file-export-permissions.getCollectionTypeData",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/fileImportCollections",
+      "handler": "spm-file-import-content.fileImportCollections",
+      "config": {
+        "policies": []
+      }
+    },
+    {
       "method": "POST",
       "path": "/backUpCurrentPermissions",
       "handler": "spm-migrate.backUpCurrentPermissions",
