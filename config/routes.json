@@ -18,8 +18,8 @@
     },
     {
       "method": "GET",
-      "path": "/exportRolesAndPermissions",
-      "handler": "spm-file-export-permissions.exportRolesAndPermissions",
+      "path": "/downloadPermissions",
+      "handler": "spm-file-export-permissions.downloadPermissions",
       "config": {
         "policies": []
       }
