@@ -7,6 +7,7 @@ import Box from '../layout/Box';
 import CardWidget from '../data-display/CardWidget';
 
 import downloadNamedJson from '../../utils/downloadNamedJson';
+import ShowMoreCollapse from '../data-display/ShowMoreCollapse';
 
 const StyledCardWidgetFile = styled(CardWidget)`
   &:before {
@@ -15,12 +16,7 @@ const StyledCardWidgetFile = styled(CardWidget)`
   }
 `;
 
-const ExportPermissionsFile = () => {
-  const [isShowMoreOpen, setShowMoreOpen] = useState(false);
-
-  const handleOpenShowMore = () => setShowMoreOpen(true);
-  const handleCloseShowMore = () => setShowMoreOpen(false);
-
+export const ExportButton = () => {
   const handlePermissionsDownload = async () => {
     try {
       const userRoles = await request(`/migrate/getPermissionsJSON`);
@@ -42,58 +38,32 @@ const ExportPermissionsFile = () => {
   };
 
   return (
+    <Box my="20px" id="download">
+      <Button
+        color="primary"
+        label="Download "
+        onClick={handlePermissionsDownload}
+      />
+    </Box>
+  );
+};
+
+const ExportPermissionsFile = () => {
+  return (
     <StyledCardWidgetFile variant="accent">
-      <h3>Download a file</h3>
-      <p>File downloads are coming soon.</p>
+      <h3>Export as a file</h3>
+      <p>Clicking the button will download a JSON file.</p>
 
-      <Box my="20px" id="download">
-        <Button
-          color="primary"
-          label="Download "
-          onClick={handlePermissionsDownload}
-        />
-      </Box>
+      <ExportButton />
 
-      <strong>
-        <a
-          target="_blank"
-          rel="noopener noreferrer"
-          href="https://github.com/ijsto/strapi-plugin-migrate/issues/6"
-        >
-          Track the issue or create a PR here.
-        </a>
-      </strong>
-
-      <div style={{ marginTop: 16 }}>
-        <strong>
-          {!isShowMoreOpen && <a onClick={handleOpenShowMore}>Show More</a>}
-          {isShowMoreOpen && <a onClick={handleCloseShowMore}>Show Less</a>}
-        </strong>
-      </div>
-
-      <div style={{ paddingTop: 16 }}>
-        <p>
-          File exports are convenient because the data can be saved in an
-          external storage.
-        </p>
-      </div>
-
-      {isShowMoreOpen && (
+      <ShowMoreCollapse openLabel="Details">
         <div style={{ paddingTop: 16 }}>
           <p>
-            Currently, file exports are not supported, but if you are interested
-            in taking on a challenge or simple would like to contribute,{' '}
-            <a
-              target="_blank"
-              rel="noopener noreferrer"
-              href="https://github.com/ijsto/strapi-plugin-migrate/issues/6"
-            >
-              please feel free to open a PR
-            </a>
-            .
+            Exports JSON file that you can save on your computer or external
+            storage.
           </p>
         </div>
-      )}
+      </ShowMoreCollapse>
     </StyledCardWidgetFile>
   );
 };
