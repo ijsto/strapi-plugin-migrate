@@ -97,7 +97,7 @@ const CollectionTypes = () => {
 
       <HeaderNav links={tabs} style={{ marginTop: '1.6rem' }} />
       <Route
-        path={`${basePluginUrl}/:migrateType/:action`}
+        path={`${basePluginUrl}/:migrateType/:exportType`}
         render={props => <ImportExportCollections {...props} />}
         exact
       />
