@@ -14,13 +14,13 @@ import ImportExportCollections from './ImportExportCollections';
 
 const CollectionTypes = () => {
   const { formatMessage } = useGlobalContext();
-  const tabs = ['export', 'import'].map(tabName => {
+  const tabs = ['file', 'clipboard'].map(tabName => {
     const name = tabName;
     const camelCaseName = camelCase(tabName);
 
     return {
       name: formatMessage({
-        id: getTrad(`UserPermissions.HeaderNav.link.${camelCaseName}`),
+        id: getTrad(`CollectionTypes.${camelCaseName}.tab.label`),
       }),
       tabName,
       to: `${basePluginUrl}/collection-types/${name}`,
@@ -32,7 +32,7 @@ const CollectionTypes = () => {
       <Route
         path={`${basePluginUrl}/collection-types`}
         render={() => (
-          <Redirect to={`${basePluginUrl}/collection-types/export`} />
+          <Redirect to={`${basePluginUrl}/collection-types/file`} />
         )}
         exact
       />
