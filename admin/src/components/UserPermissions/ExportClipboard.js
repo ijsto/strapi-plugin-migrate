@@ -17,11 +17,13 @@ const ExportClipboard = () => {
       <h1>{formatMessage({ id: getTrad(`UserPermissions.clipboard.export.title`) })}</h1>
       <p>{formatMessage({ id: getTrad(`UserPermissions.clipboard.export.description`) })}</p>
  
-      <Grid>
-        <ExportPermissionsText />
+      <Box margin="30px 0 0 0">
+        <Grid>
+          <ExportPermissionsText />
 
-        <ImportPermissionsText />
-      </Grid>
+          <ImportPermissionsText />
+        </Grid>
+      </Box>
     </Box>
   );
 };

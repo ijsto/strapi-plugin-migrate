@@ -18,11 +18,13 @@ const ExportFile = () => {
       <h1>{formatMessage({ id: getTrad(`UserPermissions.file.export.title`) })}</h1>
       <p>{formatMessage({ id: getTrad(`UserPermissions.file.export.description`) })}</p>
  
-      <Grid>
-        <ExportPermissionsFile />
+      <Box margin="30px 0 0 0">
+        <Grid>
+          <ExportPermissionsFile />
 
-        <ImportPermissionsFile />
-      </Grid>
+          <ImportPermissionsFile />
+        </Grid>
+      </Box>
     </Box>
   );
 };
