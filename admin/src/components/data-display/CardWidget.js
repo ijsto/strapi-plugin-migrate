@@ -8,7 +8,6 @@ const StyledCardWidget = styled.div`
   padding: 21px 30px;
   padding-left: 40px;
   position: relative;
-  width: calc(50% - 6px);
   
   &:before {
     position: absolute;
