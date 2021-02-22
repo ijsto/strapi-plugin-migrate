@@ -51,11 +51,11 @@ const Sidebar = () => {
         </StyledLink>
       </Link>
       
-      <div style={{ marginTop: 32}}>
-        <h4>
+      <a href="http://github.com/ijsto/strapi-plugin-migrate" target="_blank">
+        <StyledLink>
           Contribute 🚀
-        </h4>
-      </div>
+        </StyledLink>
+      </a>
     </StyledSidebar>
   );
 };
