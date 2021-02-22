@@ -1,10 +1,10 @@
-/* eslint-disable import/no-extraneous-dependencies */
 import React, { useState } from 'react';
 import { Button, Textarea } from '@buffetjs/core';
-
 import { useGlobalContext, request } from 'strapi-helper-plugin';
 
+import Box from '../layout/Box';
 import Row from '../layout/Row';
+
 import getTrad from '../../utils/getTrad';
 
 const ImportPermissionsText = () => {
@@ -50,12 +50,11 @@ const ImportPermissionsText = () => {
   };
 
   return (
-    <div>
-      <h1>{formatMessage({ id: getTrad(`UserPermissions.import.title`) })}</h1>
-
-      <div>
+    <Box>
+      <Box>
         {formatMessage({ id: getTrad(`UserPermissions.import.description`) })}
-      </div>
+      </Box>
+
       <Row>
         <Textarea
           name="import-sql-string"
@@ -73,7 +72,7 @@ const ImportPermissionsText = () => {
           onClick={handleSubmit}
         />
       </Row>
-    </div>
+    </Box>
   );
 };
 

@@ -48,12 +48,10 @@ const ImportPermissionsFile = () => {
   };
 
   return (
-    <Box px="20px">
-      <h1>{formatMessage({ id: getTrad(`UserPermissions.import.title`) })}</h1>
-
-      <div>
-        {formatMessage({ id: getTrad(`UserPermissions.import.description`) })}
-      </div>
+    <Box>
+      <Box>
+        {formatMessage({ id: getTrad(`UserPermissions.import.file.description`) })}
+      </Box>
 
       <Box py="20px">
         <input

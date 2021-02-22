@@ -24,10 +24,7 @@ const ExportPermissionsText = () => {
   const [retrievedPostgresString, setRetrievedPostgresString] = useState('');
 
   const [loadingRetrieve, setLoadingRetrieve] = useState(false);
-
   const [copySuccess, setCopySuccess] = useState(false);
-
-  const [isShowMoreOpen, setShowMoreOpen] = useState(false);
 
   const handleRetrieve = async () => {
     setLoadingRetrieve(true);
@@ -55,9 +52,6 @@ const ExportPermissionsText = () => {
     setCopySuccess(true);
     setTimeout(() => setCopySuccess(false), 1500);
   };
-
-  const handleOpenShowMore = () => setShowMoreOpen(true);
-  const handleCloseShowMore = () => setShowMoreOpen(false);
 
   return (
     <StyledCardWidgetText variant="accent">
@@ -110,13 +104,6 @@ const ExportPermissionsText = () => {
           </p>
         </div>
       </ShowMoreCollapse>
-
-      {/* <div style={{ marginTop: 16 }}>
-        <strong>
-          {!isShowMoreOpen && <a onClick={handleOpenShowMore}>Show More</a>}
-          {isShowMoreOpen && <a onClick={handleCloseShowMore}>Show Less</a>}
-        </strong>
-      </div> */}
 
       <Box>
         <Notice>

@@ -1,21 +1,28 @@
 import React from 'react';
-import { Flex } from '@buffetjs/core';
 import { useGlobalContext } from 'strapi-helper-plugin';
+
+import Box from '../layout/Box';
+import Grid from '../layout/Grid';
+
+import getTrad from '../../utils/getTrad';
 
 import ImportPermissionsText from './ImportPermissionsText';
 import ImportPermissionsFile from './ImportPermissionsFile';
+
 
 const ImportPermissions = () => {
   const { formatMessage } = useGlobalContext();
 
   return (
-    <div>
-      <Flex>
+    <Box>
+      <h1>{formatMessage({ id: getTrad(`UserPermissions.import.title`) })}</h1>
+
+      <Grid>
         <ImportPermissionsFile />
 
         <ImportPermissionsText />
-      </Flex>
-    </div>
+      </Grid>
+    </Box>
   );
 };
 
