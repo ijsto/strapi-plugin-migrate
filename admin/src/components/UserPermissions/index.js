@@ -14,7 +14,7 @@ import basePluginUrl from '../../basePluginUrl';
 import getTrad from '../../utils/getTrad';
 
 import BackUpModal from './BackUpModal';
-import ImportExportTool from './ImportExportTool';
+import MigrateTool from './MigrateTool';
 
 const UserPermissions = () => {
   const [isModalOpen, setModalOpen] = useState(false);
@@ -24,7 +24,7 @@ const UserPermissions = () => {
 
   const { formatMessage } = useGlobalContext();
 
-  const tabs = ['export', 'import'].map(tabName => {
+  const tabs = ['file', 'clipboard'].map(tabName => {
     const name = tabName;
     const camelCaseName = camelCase(tabName);
 
@@ -46,7 +46,7 @@ const UserPermissions = () => {
       <Route
         path={`${basePluginUrl}/user-permissions`}
         render={() => (
-          <Redirect to={`${basePluginUrl}/user-permissions/export`} />
+          <Redirect to={`${basePluginUrl}/user-permissions/file`} />
         )}
         exact
       />
@@ -75,8 +75,8 @@ const UserPermissions = () => {
 
       <HeaderNav links={tabs} style={{ marginTop: '1.6rem' }} />
       <Route
-        path={`${basePluginUrl}/:migrateType/:action`}
-        render={props => <ImportExportTool {...props} />}
+        path={`${basePluginUrl}/:migrateType/:exportType`}
+        render={props => <MigrateTool {...props} />}
         exact
       />
 
