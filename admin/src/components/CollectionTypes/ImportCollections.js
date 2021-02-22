@@ -3,10 +3,10 @@ import { Button } from '@buffetjs/core';
 
 import { useGlobalContext, request } from 'strapi-helper-plugin';
 
-import Box from '../layout/Box';
+// import Box from '../layout/Box';
 import Row from '../layout/Row';
 import getTrad from '../../utils/getTrad';
-import readJsonFromFile from '../../utils/readJsonFromFile';
+// import readJsonFromFile from '../../utils/readJsonFromFile';
 
 const ImportCollections = () => {
   const { formatMessage } = useGlobalContext();
