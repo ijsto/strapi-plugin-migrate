@@ -10,11 +10,12 @@ import CardWidget from '../data-display/CardWidget';
 
 import getTrad from '../../utils/getTrad';
 import ResultsContainer from './ResultsContainer';
+import ShowMoreCollapse from '../data-display/ShowMoreCollapse';
 
 const StyledCardWidgetText = styled(CardWidget)`
   &:before {
     content: '\f036';
-    color: #adadad;
+    color: #d6d6d6;
   }
 `;
 
@@ -91,20 +92,16 @@ const ExportPermissionsText = () => {
         <ResultsContainer>{retrievedPostgresString}</ResultsContainer>
       )}
 
-      <div style={{ marginTop: 16 }}>
-        <strong>
-          {!isShowMoreOpen && <a onClick={handleOpenShowMore}>Show More</a>}
-          {isShowMoreOpen && <a onClick={handleCloseShowMore}>Show Less</a>}
-        </strong>
-      </div>
-
-      <div style={{ paddingTop: 16 }}>
-        <p>
-          You wil be able to copy-paste this from one environment to another.
-        </p>
-      </div>
-
-      {isShowMoreOpen && (
+      <ShowMoreCollapse
+        keepOnDisplay={
+          <div style={{ paddingTop: 16 }}>
+            <p>
+              You wil be able to copy-paste this from one environment to
+              another.
+            </p>
+          </div>
+        }
+      >
         <div style={{ paddingTop: 16 }}>
           <p>
             {formatMessage({
@@ -112,12 +109,18 @@ const ExportPermissionsText = () => {
             })}
           </p>
         </div>
-      )}
+      </ShowMoreCollapse>
+
+      {/* <div style={{ marginTop: 16 }}>
+        <strong>
+          {!isShowMoreOpen && <a onClick={handleOpenShowMore}>Show More</a>}
+          {isShowMoreOpen && <a onClick={handleCloseShowMore}>Show Less</a>}
+        </strong>
+      </div> */}
 
       <Box>
         <Notice>
           Note: Currently only supported for Postgres DB.
-
           <p>
             <strong>
               <a

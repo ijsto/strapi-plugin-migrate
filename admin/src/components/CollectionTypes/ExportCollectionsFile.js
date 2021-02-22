@@ -13,7 +13,7 @@ const StyledCardWidgetFile = styled(CardWidget)`
   margin-left: 2.5rem;
   &:before {
     content: '\f56d';
-    color: #adadad;
+    color: #d6d6d6;
   }
 `;
 

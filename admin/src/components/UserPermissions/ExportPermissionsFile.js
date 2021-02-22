@@ -11,7 +11,7 @@ import downloadNamedJson from '../../utils/downloadNamedJson';
 const StyledCardWidgetFile = styled(CardWidget)`
   &:before {
     content: '\f56d';
-    color: #adadad;
+    color: #d6d6d6;
   }
 `;
 

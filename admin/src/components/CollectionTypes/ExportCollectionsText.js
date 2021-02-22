@@ -6,7 +6,7 @@ import CardWidget from '../data-display/CardWidget';
 const StyledCardWidgetText = styled(CardWidget)`
   &:before {
     content: '\f036';
-    color: #adadad;
+    color: #d6d6d6;
   }
 `;
 
