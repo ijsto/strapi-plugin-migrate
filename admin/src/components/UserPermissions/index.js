@@ -30,7 +30,7 @@ const UserPermissions = () => {
 
     return {
       name: formatMessage({
-        id: getTrad(`UserPermissions.HeaderNav.link.${camelCaseName}`),
+        id: getTrad(`UserPermissions.${camelCaseName}.tab.label`),
       }),
       tabName,
       to: `${basePluginUrl}/user-permissions/${name}`,

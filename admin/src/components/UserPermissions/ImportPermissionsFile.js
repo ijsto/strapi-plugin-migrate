@@ -51,7 +51,7 @@ const ImportPermissionsFile = () => {
   return (
     <StyledCardWidgetFile variant="accent" icon="upload">
       <Box>
-        {formatMessage({ id: getTrad(`UserPermissions.import.file.description`) })}
+        {formatMessage({ id: getTrad(`UserPermissions.file.import.description`) })}
       </Box>
 
       <Box py="20px">

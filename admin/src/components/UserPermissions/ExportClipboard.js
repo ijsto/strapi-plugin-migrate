@@ -14,8 +14,8 @@ const ExportClipboard = () => {
 
   return (
     <Box>
-      <h1>{formatMessage({ id: getTrad(`UserPermissions.text.export.title`) })}</h1>
-      <p>{formatMessage({ id: getTrad(`UserPermissions.text.export.description`) })}</p>
+      <h1>{formatMessage({ id: getTrad(`UserPermissions.clipboard.export.title`) })}</h1>
+      <p>{formatMessage({ id: getTrad(`UserPermissions.clipboard.export.description`) })}</p>
  
       <Grid>
         <ExportPermissionsText />

@@ -42,7 +42,7 @@ const UserPermissionStats = () => {
 
       <Box my="20px">
         <Link to={`${basePluginUrl}/user-permissions`}>
-          <Button>Migrate Permissions</Button>
+          <Button>Go to Migrations</Button>
         </Link>
       </Box>
     </Card>
