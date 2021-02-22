@@ -4,9 +4,7 @@
  *
  */
 
-// eslint-disable-next-line import/no-extraneous-dependencies
 import React, { memo } from 'react';
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { useGlobalContext } from 'strapi-helper-plugin';
 
 // import PropTypes from 'prop-types';
