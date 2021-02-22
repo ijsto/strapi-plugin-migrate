@@ -40,13 +40,6 @@ const UserPermissionStats = () => {
         <CardInfoList list={infoList} />
       </Box>
 
-      <Box margin="0 0 20px 0">
-        You can get up to 30 or even unlimited amount of roles with Strapi paid
-        plans. See{' '}
-        <a href="https://strapi.io/pricing">https://strapi.io/pricing</a> for
-        more info.
-      </Box>
-
       <Box my="20px">
         <Link to={`${basePluginUrl}/user-permissions`}>
           <Button>Migrate Permissions</Button>
