@@ -9,7 +9,7 @@ import CardWidget from '../data-display/CardWidget';
 import downloadNamedJson from '../../utils/downloadNamedJson';
 import ShowMoreCollapse from '../data-display/ShowMoreCollapse';
 
-const StyledCardWidgetFile = styled(CardWidget)`
+export const StyledCardWidgetFile = styled(CardWidget)`
   &:before {
     content: '\f56d';
     color: #d6d6d6;
