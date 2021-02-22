@@ -14,7 +14,7 @@ import ShowMoreCollapse from '../data-display/ShowMoreCollapse';
 
 export const StyledCardWidgetText = styled(CardWidget)`
   &:before {
-    content: ${({ icon }) => icon === "copy" ? `'\f0c5'` : `'\f0ea'`};
+    content: ${({ icon }) => (icon === 'copy' ? `'\f0c5'` : `'\f0ea'`)};
     color: #d6d6d6;
   }
 `;
@@ -37,6 +37,13 @@ const ExportPermissionsText = () => {
 
       if (response) {
         const cleanedString = response.generatedString.replace(/\\\//g, '/');
+        strapi.notification.toggle({
+          message:
+            'Permissions exported. Paste into your destination Strapi app.',
+          timeout: 3500,
+          title: 'Woohoo! 🥳',
+          type: 'success',
+        });
 
         setRetrievedPostgresString(`${cleanedString};`);
         setLoadingRetrieve(false);
@@ -63,7 +70,7 @@ const ExportPermissionsText = () => {
           isLoading={loadingRetrieve}
           label="Export as text"
           onClick={handleRetrieve}
-          style={{ marginRight: 10 }}
+          style={{ marginBottom: 4, marginRight: 10 }}
         />
         {retrievedPostgresString && (
           <Button
@@ -73,37 +80,26 @@ const ExportPermissionsText = () => {
           />
         )}
       </Row>
-      {retrievedPostgresString && !loadingRetrieve && (
-        <Row>
-          <div style={{ color: '#28a745' }}>
-            Permissions exported. Copy the below text into your import module in
-            your destination app.
-          </div>
-        </Row>
-      )}
 
       {retrievedPostgresString && (
-        <ResultsContainer>{retrievedPostgresString}</ResultsContainer>
+        <ResultsContainer block disabled value={retrievedPostgresString} />
       )}
 
-      <ShowMoreCollapse
-        keepOnDisplay={
-          <div style={{ paddingTop: 16 }}>
+      <Box my="20px">
+        <ShowMoreCollapse openLabel="Info">
+          <div>
             <p>
               You wil be able to copy-paste this from one environment to
               another.
             </p>
+            <p>
+              {formatMessage({
+                id: getTrad(`UserPermissions.clipboard.export.description`),
+              })}
+            </p>
           </div>
-        }
-      >
-        <div style={{ paddingTop: 16 }}>
-          <p>
-            {formatMessage({
-              id: getTrad(`UserPermissions.export.description`),
-            })}
-          </p>
-        </div>
-      </ShowMoreCollapse>
+        </ShowMoreCollapse>
+      </Box>
 
       <Box>
         <Notice>

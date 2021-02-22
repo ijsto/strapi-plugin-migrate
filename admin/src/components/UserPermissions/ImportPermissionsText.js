@@ -1,12 +1,15 @@
 import React, { useState } from 'react';
-import { Button, Textarea } from '@buffetjs/core';
+import { Button } from '@buffetjs/core';
 import { useGlobalContext, request } from 'strapi-helper-plugin';
 
+import ShowMoreCollapse from '../data-display/ShowMoreCollapse';
 import Box from '../layout/Box';
 import Row from '../layout/Row';
 
 import getTrad from '../../utils/getTrad';
+
 import { StyledCardWidgetText } from './ExportPermissionsText';
+import ResultsContainer from './ResultsContainer';
 
 const ImportPermissionsText = () => {
   const { formatMessage } = useGlobalContext();
@@ -16,7 +19,10 @@ const ImportPermissionsText = () => {
   const [loadingSubmit, setLoadingSubmit] = useState(false);
 
   const handleSubmit = async pastedString => {
-    if ((pastedString && pastedString?.length < 10) || (!pastedString && postgresString?.length < 10))
+    if (
+      (pastedString && pastedString?.length < 10) ||
+      (!pastedString && postgresString?.length < 10)
+    )
       return strapi.notification.toggle({
         message:
           "Your import text doesn't look quite right. Please try exporting it again.",
@@ -68,35 +74,50 @@ const ImportPermissionsText = () => {
 
   return (
     <StyledCardWidgetText variant="accent">
-      <Button
-        color={pasteSuccess ? 'success' : 'primary'}
-        label={pasteSuccess ? 'Permissions imported!' : 'Import from Clipboard'}
-        isLoading={loadingSubmit}
-        disabled={loadingSubmit}
-        onClick={handlePasteImport}
-      />
-
-      <Box>
-        {formatMessage({ id: getTrad(`UserPermissions.import.description`) })}
-      </Box>
+      <h3>Import text</h3>
 
       <Row>
-        <Textarea
+        <Button
+          color={pasteSuccess ? 'success' : 'primary'}
+          label={
+            pasteSuccess ? 'Permissions imported!' : 'Import from Clipboard'
+          }
+          isLoading={loadingSubmit}
+          disabled={loadingSubmit}
+          onClick={handlePasteImport}
+        />
+      </Row>
+
+      <Box>
+        <ResultsContainer
+          block
           disabled={loadingSubmit}
           name="import-sql-string"
           onChange={({ target: { value } }) => setPostgresString(value)}
           value={postgresString}
         />
-      </Row>
+      </Box>
 
       <Row>
         <Button
           isLoading={loadingSubmit}
-          disabled={loadingSubmit}
+          disabled={!postgresString || loadingSubmit}
           label="Upload"
           onClick={handleSubmit}
         />
       </Row>
+
+      <Box my="20px">
+        <ShowMoreCollapse openLabel="Info">
+          <div>
+            <p>
+              {formatMessage({
+                id: getTrad(`UserPermissions.import.description`),
+              })}
+            </p>
+          </div>
+        </ShowMoreCollapse>
+      </Box>
     </StyledCardWidgetText>
   );
 };
