@@ -6,29 +6,38 @@ import Box from '../layout/Box';
 import Row from '../layout/Row';
 
 import getTrad from '../../utils/getTrad';
+import { StyledCardWidgetText } from './ExportPermissionsText';
 
 const ImportPermissionsText = () => {
   const { formatMessage } = useGlobalContext();
   const [postgresString, setPostgresString] = useState('');
+  const [pasteSuccess, setPasteSuccess] = useState(false);
 
   const [loadingSubmit, setLoadingSubmit] = useState(false);
 
-  const handleSubmit = async () => {
-    if (postgresString?.length < 10) return;
+  const handleSubmit = async pastedString => {
+    if ((pastedString && pastedString?.length < 10) || (!pastedString && postgresString?.length < 10))
+      return strapi.notification.toggle({
+        message:
+          "Your import text doesn't look quite right. Please try exporting it again.",
+        timeout: 3500,
+        title: 'Whoopsies!',
+        type: 'warning',
+      });
 
     setLoadingSubmit(true);
 
     try {
       const response = await request('/migrate/uploadPostgres', {
         method: 'POST',
-        body: { postgresString },
+        body: { postgresString: pastedString || postgresString },
       });
 
       if (response.success) {
         strapi.notification.toggle({
           link: {
-            label: "Go to Roles",
-            url: "/admin/settings/users-permissions/roles",
+            label: 'Go to Roles',
+            url: '/admin/settings/users-permissions/roles',
           },
           message: 'User permissions exported successfully.',
           timeout: 3500,
@@ -38,7 +47,7 @@ const ImportPermissionsText = () => {
         setPostgresString('');
         setLoadingSubmit(false);
       }
-    } catch (e) {
+    } catch (err) {
       strapi.notification.toggle({
         message: err.toString(),
         timeout: 3500,
@@ -49,16 +58,32 @@ const ImportPermissionsText = () => {
     }
   };
 
+  const handlePasteImport = () => {
+    navigator.clipboard.readText().then(text => handleSubmit(text));
+    setPasteSuccess(true);
+    setTimeout(() => {
+      setPasteSuccess(false);
+    }, 3500);
+  };
+
   return (
-    <Box>
+    <StyledCardWidgetText variant="accent">
+      <Button
+        color={pasteSuccess ? 'success' : 'primary'}
+        label={pasteSuccess ? 'Permissions imported!' : 'Import from Clipboard'}
+        isLoading={loadingSubmit}
+        disabled={loadingSubmit}
+        onClick={handlePasteImport}
+      />
+
       <Box>
         {formatMessage({ id: getTrad(`UserPermissions.import.description`) })}
       </Box>
 
       <Row>
         <Textarea
-          name="import-sql-string"
           disabled={loadingSubmit}
+          name="import-sql-string"
           onChange={({ target: { value } }) => setPostgresString(value)}
           value={postgresString}
         />
@@ -68,11 +93,11 @@ const ImportPermissionsText = () => {
         <Button
           isLoading={loadingSubmit}
           disabled={loadingSubmit}
-          label="Run it"
+          label="Upload"
           onClick={handleSubmit}
         />
       </Row>
-    </Box>
+    </StyledCardWidgetText>
   );
 };
 

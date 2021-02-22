@@ -7,6 +7,7 @@ import Row from '../layout/Row';
 
 import readJsonFromFile from '../../utils/readJsonFromFile';
 import getTrad from '../../utils/getTrad';
+import { StyledCardWidgetFile } from './ExportPermissionsFile';
 
 const ImportPermissionsFile = () => {
   const { formatMessage } = useGlobalContext();
@@ -48,7 +49,7 @@ const ImportPermissionsFile = () => {
   };
 
   return (
-    <Box>
+    <StyledCardWidgetFile variant="accent" icon="upload">
       <Box>
         {formatMessage({ id: getTrad(`UserPermissions.import.file.description`) })}
       </Box>
@@ -79,7 +80,7 @@ const ImportPermissionsFile = () => {
           onClick={handleSubmit}
         />
       </Row>
-    </Box>
+    </StyledCardWidgetFile>
   );
 };
 
