@@ -12,9 +12,9 @@ import getTrad from '../../utils/getTrad';
 import ResultsContainer from './ResultsContainer';
 import ShowMoreCollapse from '../data-display/ShowMoreCollapse';
 
-const StyledCardWidgetText = styled(CardWidget)`
+export const StyledCardWidgetText = styled(CardWidget)`
   &:before {
-    content: '\f036';
+    content: ${({ icon }) => icon === "copy" ? `'\f0c5'` : `'\f0ea'`};
     color: #d6d6d6;
   }
 `;
@@ -54,7 +54,7 @@ const ExportPermissionsText = () => {
   };
 
   return (
-    <StyledCardWidgetText variant="accent">
+    <StyledCardWidgetText variant="accent" icon="copy">
       <h3>Export as text</h3>
 
       <Row>

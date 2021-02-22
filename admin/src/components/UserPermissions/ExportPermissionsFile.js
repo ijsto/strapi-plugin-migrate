@@ -11,7 +11,7 @@ import ShowMoreCollapse from '../data-display/ShowMoreCollapse';
 
 export const StyledCardWidgetFile = styled(CardWidget)`
   &:before {
-    content: '\f56d';
+    content: ${({ icon }) => icon === "upload" ? `'\f574'` : `'\f56d'`};
     color: #d6d6d6;
   }
 `;
@@ -51,8 +51,8 @@ export const ExportButton = () => {
 const ExportPermissionsFile = () => {
   return (
     <StyledCardWidgetFile variant="accent">
-      <h3>Export as a file</h3>
-      <p>Clicking the button will download a JSON file.</p>
+      <h3>Download an Export file</h3>
+      <p>Clicking the button will download a JSON file with roles and permissions.</p>
 
       <ExportButton />
 
