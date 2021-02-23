@@ -33,6 +33,22 @@
       }
     },
     {
+      "method": "GET",
+      "path": "/getCoreStoreJSON",
+      "handler": "spm-file-export-core-store.getCoreStoreJSON",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/uploadCoreStoreJSON",
+      "handler": "spm-file-import-core-store.uploadCoreStoreJSON",
+      "config": {
+        "policies": []
+      }
+    },
+    {
       "method": "POST",
       "path": "/uploadPermissionsJSON",
       "handler": "spm-file-import-permissions.uploadPermissionsJSON",
