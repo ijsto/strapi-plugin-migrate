@@ -40,8 +40,10 @@ npm cache clean --force && npm run dev
 
 ## Contributing to/Developing this plugin
 
-Thank you for considering to contribute! To find out please read the CONTRIBUTING.md.
+Thank you for considering to contribute! To find out please read the [CONTRIBUTING.md](https://github.com/ijsto/strapi-plugin-migrate/blob/master/CONTRIBUTING.md).
 
-### Credits
+Please make sure you read the contirbuting guide before making a PR.
+
+#### Credits
 
 Parts of the initial concept for a module in users permissions file JSON export was inspired by [@Alan2207](https://github.com/alan2207/strapi-plugin-sync-roles-permissions)
