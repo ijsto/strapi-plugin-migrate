@@ -35,6 +35,18 @@ module.exports = {
 
     const collectionTypesKeys = Object.keys(collectionTypes);
 
+    // Potential flow #1 (replace) [wip] [help-wanted]
+    // // query all existing data
+    // // export
+    // // on import:
+    // // delete all existing data in new environment
+    // // reset ID index (depends on DB type for RAW query)
+    // // import exported data
+    
+    // Potential flow #2 (update) [wip] [help-wanted]
+    // // strapi.*.query().update({id: data.id, ...data})
+    // // strapi.*.query().create(data)
+
     await Promise.all(
       collectionTypesKeys.map(async typeKey => {
         const model = strapi.models[typeKey];
