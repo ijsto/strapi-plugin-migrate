@@ -44,18 +44,16 @@ module.exports = {
       return ctx.unauthorized('You must be an admin to import permissions.');
     }
 
-    const roleValues = Object.values(rolesAndPermissions);
-
     const isValidJSON = await Promise.all(
-      roleValues.map(async role => roleYupSchema.isValid(role))
+      rolesAndPermissions.map(async role => roleYupSchema.isValid(role))
     ).then(values => values.every(Boolean));
 
     if (!isValidJSON) {
       return ctx.throw(400, 'Please provide a valid JSON');
     }
-
+    
     await Promise.all(
-      roleValues.map(async data => {
+      rolesAndPermissions.map(async data => {
         const role = await strapi
           .query('role', 'users-permissions')
           .findOne({ name: data.name });
