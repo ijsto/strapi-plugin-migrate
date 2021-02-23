@@ -50,7 +50,7 @@ const ImportCoreStoreFile = () => {
   };
 
   return (
-    <StyledCardWidgetFile variant="accent" icon="upload">
+    <StyledCardWidgetFile variant="accent" icon="upload" alignSelf="flex-start">
       <Notice>
         <div style={{ position: 'relative' }}>
           <span

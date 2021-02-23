@@ -49,7 +49,7 @@ export const ExportCoreStoreButton = ({ fileName, label }) => {
 
 const ExportCoreStoreFile = () => {
   return (
-    <StyledCardWidgetFile variant="accent">
+    <StyledCardWidgetFile variant="accent" alignSelf="flex-start">
       <h3>Download an Export file</h3>
       <p>
         Clicking the button will download a JSON file with your Strapi Settings and layouts data.
