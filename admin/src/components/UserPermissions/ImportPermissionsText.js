@@ -3,13 +3,14 @@ import { Button } from '@buffetjs/core';
 import { useGlobalContext, request } from 'strapi-helper-plugin';
 
 import ShowMoreCollapse from '../data-display/ShowMoreCollapse';
+import TextArea from '../data-entry/TextArea';
+
 import Box from '../layout/Box';
 import Row from '../layout/Row';
 
 import getTrad from '../../utils/getTrad';
 
 import { StyledCardWidgetText } from './ExportPermissionsText';
-import ResultsContainer from './ResultsContainer';
 
 const ImportPermissionsText = () => {
   const { formatMessage } = useGlobalContext();
@@ -89,7 +90,7 @@ const ImportPermissionsText = () => {
       </Row>
 
       <Box>
-        <ResultsContainer
+        <TextArea
           block
           disabled={loadingSubmit}
           name="import-sql-string"

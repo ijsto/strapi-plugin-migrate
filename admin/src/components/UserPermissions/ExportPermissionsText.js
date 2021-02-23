@@ -3,14 +3,16 @@ import React, { useState } from 'react';
 import { Button } from '@buffetjs/core';
 import { useGlobalContext, request } from 'strapi-helper-plugin';
 
+import CardWidget from '../data-display/CardWidget';
+import ShowMoreCollapse from '../data-display/ShowMoreCollapse';
+import TextArea from '../data-entry/TextArea';
+
 import Notice from '../feedback/Notice';
+
 import Box from '../layout/Box';
 import Row from '../layout/Row';
-import CardWidget from '../data-display/CardWidget';
 
 import getTrad from '../../utils/getTrad';
-import ResultsContainer from './ResultsContainer';
-import ShowMoreCollapse from '../data-display/ShowMoreCollapse';
 
 export const StyledCardWidgetText = styled(CardWidget)`
   &:before {
@@ -82,7 +84,7 @@ const ExportPermissionsText = () => {
       </Row>
 
       {retrievedPostgresString && (
-        <ResultsContainer block disabled value={retrievedPostgresString} />
+        <TextArea block disabled value={retrievedPostgresString} />
       )}
 
       <Box my="20px">

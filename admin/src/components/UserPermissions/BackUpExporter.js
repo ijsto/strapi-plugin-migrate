@@ -3,8 +3,8 @@ import React, { useEffect, useState } from 'react';
 import { request } from 'strapi-helper-plugin';
 import { Button, Padded } from '@buffetjs/core';
 
+import TextArea from '../data-entry/TextArea';
 import Row from '../layout/Row';
-import ResultsContainer from './ResultsContainer';
 
 const BackUpExporter = () => {
   const [retrievedBackUpString, setRetrievedBackUpString] = useState('');
@@ -62,7 +62,7 @@ const BackUpExporter = () => {
         </Row>
 
         {retrievedBackUpString && (
-          <ResultsContainer>{retrievedBackUpString}</ResultsContainer>
+          <TextArea>{retrievedBackUpString}</TextArea>
         )}
       </Padded>
     </div>
