@@ -23,6 +23,10 @@ module.exports = {
 
       const coreStoreAPI = strapi.query('core_store');
 
+      // @TODO: Add option to replace all even if exists
+      // so - don't check for found, but delete all and create all from received data.
+      // potentially destructive, will need checks to ensure that
+      // coreStore matches the current app's coreStore.
       await Promise.all(
         coreStore.map(async data => {
           const isFound = await strapi
