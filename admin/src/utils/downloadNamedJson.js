@@ -6,7 +6,7 @@ export default function downloadNamedJson(exportFile, exportFileName) {
   )}`;
   const a = document.createElement('a');
   a.href = `data:${data}`;
-  a.download = `${exportFileName}.json`;
+  a.download = `${exportFileName}-${new Date().toISOString()}.json`;
   a.innerHTML = 'download JSON';
 
   const container = document.getElementById('download');
