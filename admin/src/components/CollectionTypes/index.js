@@ -61,23 +61,15 @@ const CollectionTypes = () => {
 
           <div style={{ flex: 2 }}>
             <h2>
-              <strong>NOTE BENE</strong>
+              <strong>UZMANĪBU!</strong>
             </h2>
             <div>
               <p>
-                Collection Type migrations are currently not supported. It is a
-                top priority, and Strapi Plugin Migrate will not leave the Beta-land
-                before this is implemented.
+                Collection Type migrations are currently not supported. There are a few considerations and challenges, so this may not be available for a while.
               </p>
 
               <p>
-                Some progress has been made, however, we need to figure out how
-                to export models with their corresponding relations and import
-                these relations.
-              </p>
-
-              <p>
-                If you think you may be able to contribute to solve this, please{' '}
+                That said (written), if you think you may be able to contribute to solve this, please{' '}
                 <strong>
                   <a
                     target="_blank"
