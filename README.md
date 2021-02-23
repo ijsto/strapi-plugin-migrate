@@ -6,16 +6,42 @@
 
 # Strapi plugin strapi-plugin-migrate
 
-## How to use:
+## Quick start
 
-1 - `npm i strapi-plugin-migrate` or `yarn add strapi-plugin-migrate`
+1 - Install the plugin in your Strapi project
 
-2 - `yarn build --clean && yarn dev` or `npm cache clean --force && npm run dev`
+```bash
+npm i strapi-plugin-migrate
+```
+
+or
+
+```
+yarn add strapi-plugin-migrate
+```
+
+2 - Rebuild your Strapi app and clean your cache
+
+```bash
+yarn build --clean && yarn dev
+```
+
+or
+
+```bash
+npm cache clean --force && npm run dev
+```
 
 3 - Go to Sidebar Menu > Migrate Strapi
 
-4 - Export your data and copy it to clipboard or a file
+4 - Export your data by downloading a JSON file or Copying the Text string
 
 5 - Import your data in the target environment
 
-6 - Click "Run it" and you're done!
+## Contributing to/Developing this plugin
+
+Thank you for considering to contribute! To find out please read the CONTRIBUTING.md.
+
+### Credits
+
+Parts of the initial concept for a module in users permissions file JSON export was inspired by [@Alan2207](https://github.com/alan2207/strapi-plugin-sync-roles-permissions)
