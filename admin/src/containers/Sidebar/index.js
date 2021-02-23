@@ -44,6 +44,12 @@ const Sidebar = () => {
           {formatMessage({ id: getTrad(`Sidebar.link.userPermissions`) })}
         </StyledLink>
       </Link>
+      
+      <Link to={`${basePluginUrl}/core-store`}>
+        <StyledLink>
+          {formatMessage({ id: getTrad(`Sidebar.link.coreStore`) })}
+        </StyledLink>
+      </Link>
 
       <Link to={`${basePluginUrl}/collection-types`}>
         <StyledLink>
