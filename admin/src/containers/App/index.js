@@ -16,6 +16,7 @@ import Wrapper from './Wrapper';
 import basePluginUrl from '../../basePluginUrl';
 
 // Containers
+import CoreStorePage from '../CoreStorePage';
 import CollectionTypesPage from '../CollectionTypesPage';
 import HomePage from '../HomePage';
 import UserPermissionsPage from '../UserPermissionsPage';
@@ -33,6 +34,11 @@ const App = () => {
         <Route
           path={`${basePluginUrl}/user-permissions`}
           render={() => <UserPermissionsPage />}
+        />
+        
+        <Route
+          path={`${basePluginUrl}/core-store`}
+          render={() => <CoreStorePage />}
         />
         
         <Route
