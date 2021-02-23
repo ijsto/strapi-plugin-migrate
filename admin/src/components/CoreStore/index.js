@@ -40,33 +40,6 @@ const CoreStore = () => {
         exact
       />
 
-      <Notice>
-        <Flex justifyContent="space-between" alignItems="center">
-          <div style={{ marginRight: 32 }}>
-            <span
-              style={{ display: 'block', fontSize: 54 }}
-              role="img"
-              aria-label="Rocket-launch"
-            >
-              🚀
-            </span>
-            <ExportCoreStoreButton
-              fileName="settings-layout-backup-strapi"
-              label="Download Back-up"
-            />
-          </div>
-
-          <div style={{ flex: 2 }}>
-            <h2>Back up</h2>
-            <div>
-              {formatMessage({
-                id: getTrad(`CoreStore.info.backupNotice`),
-              })}
-            </div>
-          </div>
-        </Flex>
-      </Notice>
-
       <Spacer />
 
       <HeaderNav links={tabs} style={{ marginTop: '1.6rem' }} />

@@ -5,7 +5,6 @@ import { Button } from '@buffetjs/core';
 
 import CardWidget from '../data-display/CardWidget';
 import ShowMoreCollapse from '../data-display/ShowMoreCollapse';
-import Box from '../layout/Box';
 
 import downloadNamedJson from '../../utils/downloadNamedJson';
 
@@ -38,13 +37,13 @@ export const ExportCoreStoreButton = ({ fileName, label }) => {
   };
 
   return (
-    <Box my="20px" id="download">
+    <div id="download">
       <Button
         color="primary"
         label={label || 'Download'}
         onClick={handleExport}
       />
-    </Box>
+    </div>
   );
 };
 

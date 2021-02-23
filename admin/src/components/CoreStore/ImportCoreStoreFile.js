@@ -1,13 +1,17 @@
 import React, { useState } from 'react';
-import { Button, Padded,Text } from '@buffetjs/core';
+import { Button, Padded, Text } from '@buffetjs/core';
 import { useGlobalContext, request } from 'strapi-helper-plugin';
 
-import Box from '../layout/Box';
+import Notice from '../feedback/Notice';
+
 import Row from '../layout/Row';
 
 import readJsonFromFile from '../../utils/readJsonFromFile';
 import getTrad from '../../utils/getTrad';
-import { StyledCardWidgetFile } from './ExportCoreStoreFile';
+import {
+  ExportCoreStoreButton,
+  StyledCardWidgetFile,
+} from './ExportCoreStoreFile';
 
 const ImportCoreStoreFile = () => {
   const { formatMessage } = useGlobalContext();
@@ -47,13 +51,50 @@ const ImportCoreStoreFile = () => {
 
   return (
     <StyledCardWidgetFile variant="accent" icon="upload">
-      <Box>
+      <Notice>
+        <div style={{ position: 'relative' }}>
+          <span
+            style={{
+              bottom: -16,
+              fontSize: 41,
+              marginRight: 16,
+              position: 'absolute',
+              right: 0,
+            }}
+            role="img"
+            aria-label="Rocket-launch"
+          >
+            🚀
+          </span>
+
+          <Padded size="sm">
+            <h2>Back up</h2>
+          </Padded>
+
+          <Padded bottom size="smd">
+            <div>
+              {formatMessage({
+                id: getTrad(`CoreStore.info.backupNotice`),
+              })}
+            </div>
+          </Padded>
+        </div>
+
+        <ExportCoreStoreButton
+          fileName="settings-layout-backup-strapi"
+          label="Download Back-up"
+        />
+      </Notice>
+
+      <Padded top size="smd">
+        <h3>Upload Settings file</h3>
+
         {formatMessage({
           id: getTrad(`CoreStore.file.import.description`),
         })}
-      </Box>
+      </Padded>
 
-      <Box py="20px">
+      <Padded top size="smd">
         <input
           id="upload"
           accept=".json"
@@ -71,10 +112,10 @@ const ImportCoreStoreFile = () => {
           style={{ width: 90 }}
           type="file"
         />
-      </Box>
+      </Padded>
 
       {fileForUploadName && (
-        <Padded>
+        <Padded top size="smd">
           <h3>You've selected:</h3>
           <Text>{fileForUploadName}</Text>
         </Padded>

@@ -16,7 +16,7 @@
   "CoreStore.import.title": "Import Core Settings",
   "CoreStore.header.title": "Settings & Layouts Migrations",
   "CoreStore.header.description": "Migrate Strapi Core Settings and layout views.",
-  "CoreStore.info.backupNotice": "So much better to be safe than sorry! Make sure to back up your existing settings in case you need to revert. This will yield the same result as the \"Export now\" button below.",
+  "CoreStore.info.backupNotice": "Better safe than sorry. Back-up your current settings in case things go south.",
   "CoreStore.file.tab.label": "File Migration",
   "CoreStore.file.import.description": "Upload the exported file.",
   "CoreStore.file.export.title": "Migrate by file",
