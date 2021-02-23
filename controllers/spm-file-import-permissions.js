@@ -34,15 +34,15 @@ module.exports = {
     });
   },
   uploadPermissionsJSON: async ctx => {
-    const { rolesAndPermissions } = ctx.request.body;
     const { user } = ctx.state;
-
-    const service =
-      strapi.plugins['users-permissions'].services.userspermissions;
-
     if (user.roles[0].id != 1) {
       return ctx.unauthorized('You must be an admin to import permissions.');
     }
+    
+    const { rolesAndPermissions } = ctx.request.body;
+    
+    const service =
+      strapi.plugins['users-permissions'].services.userspermissions;
 
     const isValidJSON = await Promise.all(
       rolesAndPermissions.map(async role => roleYupSchema.isValid(role))

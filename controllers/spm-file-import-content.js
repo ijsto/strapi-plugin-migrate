@@ -25,14 +25,12 @@ module.exports = {
     // @NOTE: This controller is work in progress.
     // To track progress/contribute/submit a PR
     // visit this github link: https://github.com/ijsto/strapi-plugin-migrate/issues/6
-
-    const { collectionTypes } = ctx.request.body;
     const { user } = ctx.state;
-
     if (user.roles[0].id != 1) {
       return ctx.unauthorized('You must be an admin to import content.');
     }
 
+    const { collectionTypes } = ctx.request.body;
     const collectionTypesKeys = Object.keys(collectionTypes);
 
     // Potential flow #1 (replace) [wip] [help-wanted]

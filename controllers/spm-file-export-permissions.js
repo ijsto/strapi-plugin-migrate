@@ -23,6 +23,10 @@ module.exports = {
   },
   getPermissions: async ctx => {
     const { user } = ctx.state;
+    if (user.roles[0].id !== 1) {
+      return ctx.unauthorized('You must be an admin to export permissions.');
+    }
+    
     const service =
       strapi.plugins['users-permissions'].services.userspermissions;
 
