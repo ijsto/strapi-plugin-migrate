@@ -5,6 +5,7 @@ import Box from '../layout/Box';
 import Grid from '../layout/Grid';
 
 import CollectionTypeStats from './CollectionTypeStats';
+import SettingsLayoutsStats from './SettingsLayoutsStats';
 import UserPermissionStats from './UserPermissionStats';
 
 const Dashboard = () => {
@@ -15,6 +16,8 @@ const Dashboard = () => {
       <Box py="10px">
         <Grid>
           <UserPermissionStats />
+          
+          <SettingsLayoutsStats />
 
           <CollectionTypeStats />
 
