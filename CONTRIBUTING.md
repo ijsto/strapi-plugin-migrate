@@ -40,10 +40,21 @@ mkdir plugins && cd plugins && git clone git@github.com:YOUR_USERNAME/strapi-plu
 
 _If you are cloning to an existing project with an existing `plugins` folder, omit the `mkdir plugins`_
 
-### 5. Develop
+### 5. Prepare the app and the Admin UI
 
 You'll need to rebuild admin UI and start development from Strapi root folder.
 
 ```bash
 cd .. && yarn && yarn build --clean && strapi develop --watch-admin
 ```
+
+### 6. Develop
+
+From here on you are good to go - make changes to files in the `/plugins/migrate` folder and they will be reflected in the browser.
+
+### 7. Creating a PR
+
+When creating a PR, please make sure your code is clean, and you describe 1) what you are changing; 2) why you are changing; 3) what you are adding; 4) why you are adding - and so on. As many details as you can that will help reviewing the PR.
+
+
+Thank you for considering to contribute!! 🙌
