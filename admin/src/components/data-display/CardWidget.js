@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 const StyledCardWidget = styled.div`
+  align-self: ${({ alignSelf }) => alignSelf};
   background-color: ${({variant}) => variant === "accent" ? "#f7f8f8" : "white"};
   height: auto;
   line-height: 18px;
