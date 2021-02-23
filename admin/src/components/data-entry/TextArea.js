@@ -14,8 +14,8 @@ export const StyledResultContainer = styled.textarea`
   width: ${({ block }) => (block ? '100%' : 'auto')};
 `;
 
-const ResultsContainer = ({ children, ...rest }) => (
+const TextArea = ({ children, ...rest }) => (
   <StyledResultContainer {...rest}>{children}</StyledResultContainer>
 );
 
-export default ResultsContainer;
+export default TextArea;
