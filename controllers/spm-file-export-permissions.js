@@ -58,7 +58,6 @@ module.exports = {
   },
   getPermissionsJSON: async ctx => {
     const { user } = ctx.state;
-    // Administrator role ID by default is 1, so we check for admin rights.
     if (user.roles[0].code !== 'strapi-super-admin') {
       return ctx.unauthorized('You must be an admin to export permissions.');
     }
