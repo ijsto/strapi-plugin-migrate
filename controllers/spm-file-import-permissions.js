@@ -35,7 +35,7 @@ module.exports = {
   },
   uploadPermissionsJSON: async ctx => {
     const { user } = ctx.state;
-    if (user.roles[0].id != 1) {
+    if (user.roles[0].code !== 'strapi-super-admin') {
       return ctx.unauthorized('You must be an admin to import permissions.');
     }
     

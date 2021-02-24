@@ -4,7 +4,7 @@ import { request } from 'strapi-helper-plugin';
 import { Button } from '@buffetjs/core';
 
 import CardWidget from '../data-display/CardWidget';
-import Notice from '../Feedback/Notice';
+import Notice from '../feedback/Notice';
 import Box from '../layout/Box';
 
 import downloadNamedJson from '../../utils/downloadNamedJson';
