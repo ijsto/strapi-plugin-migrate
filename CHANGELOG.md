@@ -1,10 +1,13 @@
 # Changelog
 
-All notable changes to this project will be documented in this file.
-Minor changes that do not affect functionality are not guaranteed to be reflected in this file.
+All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
-The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
-and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+### [3.0.3](https://github.com/ijsto/strapi-plugin-migrate/compare/v3.0.0...v3.0.3) (2021-02-24)
+
+
+### Bug Fixes
+
+* correct way to check permissions for all databases ([233222e](https://github.com/ijsto/strapi-plugin-migrate/commit/233222ef65512bf0c75db6ec5167e0c95219e5c6))
 
 ## [0.1.0] - 2020-08-07
 
