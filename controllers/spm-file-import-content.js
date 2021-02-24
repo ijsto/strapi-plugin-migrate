@@ -26,7 +26,7 @@ module.exports = {
     // To track progress/contribute/submit a PR
     // visit this github link: https://github.com/ijsto/strapi-plugin-migrate/issues/6
     const { user } = ctx.state;
-    if (user.roles[0].id != 1) {
+    if (user.roles[0].code !== 'strapi-super-admin') {
       return ctx.unauthorized('You must be an admin to import content.');
     }
 
