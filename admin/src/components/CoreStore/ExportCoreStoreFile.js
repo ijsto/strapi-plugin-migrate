@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { request } from 'strapi-helper-plugin';
-import { Button } from '@buffetjs/core';
+import { Button, Padded } from '@buffetjs/core';
 
 import CardWidget from '../data-display/CardWidget';
 import ShowMoreCollapse from '../data-display/ShowMoreCollapse';
@@ -15,11 +15,36 @@ export const StyledCardWidgetFile = styled(CardWidget)`
   }
 `;
 
-export const ExportCoreStoreButton = ({ fileName, label }) => {
-  const handleExport = async () => {
+export const ExportCoreStoreButton = ({ fileName, label, showOptions }) => {
+  const [models, setModels] = useState();
+  const [selectedModel, setSelectedModel] = useState('');
+
+  useEffect(() => {
+    async function fetchData() {
+      const { data } = await request('/content-type-builder/content-types');
+      setModels(
+        data.map((model) => ({
+          value: model.uid,
+          name: model.schema.name,
+        }))
+      );
+    }
+
+    if (showOptions) fetchData();
+  }, [models && models.length]);
+
+  const handleExport = async (model) => {
     try {
-      const userRoles = await request(`/migrate/getCoreStoreJSON`);
-      downloadNamedJson(userRoles, fileName || 'settings-layouts-strapi-migrate');
+      const path = model
+        ? `/migrate/getCoreStoreJSON/${model}`
+        : '/migrate/getCoreStoreJSON';
+      const data = await request(path);
+
+      const defaultFilename = model
+        ? `settings-layouts-strapi-migrate-${model}`
+        : 'settings-layouts-strapi-migrate';
+      downloadNamedJson(data, fileName || defaultFilename);
+
       strapi.notification.toggle({
         message: 'Settings and layouts exported successfully.',
         timeout: 3500,
@@ -36,13 +61,30 @@ export const ExportCoreStoreButton = ({ fileName, label }) => {
     }
   };
 
+  const handleChange = (e) => {
+    setSelectedModel(e.currentTarget.value);
+  };
+
   return (
     <div id="download">
-      <Button
-        color="primary"
-        label={label || 'Download'}
-        onClick={handleExport}
-      />
+      {showOptions && (
+        <Padded top size="smd">
+          <select onChange={handleChange} disabled={!models}>
+            <option value="">All data</option>
+            {models && models.map(({ name, value }) => (
+              <option key={value} value={value}>{name}</option>
+            ))}
+          </select>
+        </Padded>
+      )}
+      <Padded top size="smd">
+        <Button
+          color="primary"
+          disabled={showOptions && !models}
+          label={label || 'Download'}
+          onClick={() => handleExport(selectedModel)}
+        />
+      </Padded>
     </div>
   );
 };
@@ -55,7 +97,7 @@ const ExportCoreStoreFile = () => {
         Clicking the button will download a JSON file with your Strapi Settings and layouts data.
       </p>
 
-      <ExportCoreStoreButton />
+      <ExportCoreStoreButton showOptions={true} />
 
       <ShowMoreCollapse openLabel="Details">
         <div style={{ paddingTop: 16 }}>
