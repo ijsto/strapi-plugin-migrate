@@ -23,10 +23,12 @@ export const ExportCoreStoreButton = ({ fileName, label, showOptions }) => {
     async function fetchData() {
       const { data } = await request('/content-type-builder/content-types');
       setModels(
-        data.map((model) => ({
-          value: model.uid,
-          name: model.schema.name,
-        }))
+        data
+          .map((model) => ({
+            value: model.uid,
+            name: model.schema.name,
+          }))
+          .sort((a, b) => a.name.localeCompare(b.name))
       );
     }
 
@@ -70,7 +72,7 @@ export const ExportCoreStoreButton = ({ fileName, label, showOptions }) => {
       {showOptions && (
         <Padded top size="smd">
           <select onChange={handleChange} disabled={!models}>
-            <option value="">All data</option>
+            <option value="">All models</option>
             {models && models.map(({ name, value }) => (
               <option key={value} value={value}>{name}</option>
             ))}
