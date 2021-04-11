@@ -57,7 +57,7 @@ const Sidebar = () => {
         </StyledLink>
       </Link>
       
-      <a href="http://github.com/ijsto/strapi-plugin-migrate" target="_blank">
+      <a href="https://github.com/ijsto/strapi-plugin-migrate/blob/main/CONTRIBUTING.md" target="_blank">
         <StyledLink>
           Contribute 🚀
         </StyledLink>
