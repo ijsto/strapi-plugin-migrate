@@ -2,7 +2,25 @@
 <img width="500px" src="https://github.com/ijsto/strapi-plugin-migrate/blob/master/admin/src/assets/images/readme-jumbo.png?raw=true"/>
 </p>
 
-# Strapi plugin strapi-plugin-migrate
+# Strapi `plugin` Migrate
+
+## About
+
+Strapi Plugin Migrate let's you easily transfer user permissions, settings, and layouts between your Strapi instances.
+
+<details><summary><span>More info</span></summary>
+<p>
+For an example, let's consider User Permissions - when you configure User Permissions for routes and roles in, for example, `development`, these settings are stored in your database and therefore are not transferred to your `production` environment.
+
+Until now normally you would have to manually sync these checkboxes in your target environment. `strapi-plugin-migrate` enables you to simply export a file from your `development` environment (or any other) to `production` (or any other).
+
+Similarly - `strapi-plugin-migrate` enables the same for layout configuration and Strapi app Settings.
+<!-- TODO: Add paragraph with description of what's included in Settings. -->
+
+</p>
+</details>
+
+<hr />
 
 ## Quick start
 

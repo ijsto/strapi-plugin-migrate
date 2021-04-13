@@ -32,7 +32,7 @@ git clone git@github.com:YOUR_USERNAME/strapi-playground.git
 
 ### 4. Clone Strapi Plugin Migrate to your project's `/plugins` folder.
 
-_replace `YOUR_USERNAME` with your username 🙂_
+_replace `YOUR_USERNAME` with your username_ 🙂
 
 ```bash
 mkdir plugins && cd plugins && git clone git@github.com:YOUR_USERNAME/strapi-plugin-migrate.git migrate
