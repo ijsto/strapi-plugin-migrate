@@ -34,7 +34,7 @@
     },
     {
       "method": "GET",
-      "path": "/getCoreStoreJSON",
+      "path": "/getCoreStoreJSON/:model?",
       "handler": "spm-file-export-core-store.getCoreStoreJSON",
       "config": {
         "policies": []
