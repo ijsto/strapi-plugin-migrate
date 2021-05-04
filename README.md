@@ -54,6 +54,18 @@ npm cache clean --force && npm run dev
 
 5 - Import your data in the target environment
 
+## Updating to new version
+
+When updating to a new version, you will need to rebuild your Strapi admin UI for the changes to take effect.
+
+This is how we would update to the latest version:
+
+from your Strapi project root folder:
+
+```bash
+yarn add strapi-plugin-migrate@latest && yarn build --clean
+```
+
 ## Contributing to/Developing this plugin
 
 Thank you for considering to contribute! To find out please read the [CONTRIBUTING.md](https://github.com/ijsto/strapi-plugin-migrate/blob/master/CONTRIBUTING.md).
