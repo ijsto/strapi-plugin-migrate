@@ -33,6 +33,22 @@
       }
     },
     {
+      "method": "POST",
+      "path": "/user-permissions/json/import",
+      "handler": "spm-file-import-permissions.uploadPermissionsJSON",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/user-permissions/backup",
+      "handler": "spm-migrate.backUpCurrentPermissions",
+      "config": {
+        "policies": []
+      }
+    },
+    {
       "method": "GET",
       "path": "/core-store/json/export",
       "handler": "spm-file-export-core-store.getCoreStoreJSON",
@@ -44,30 +60,6 @@
       "method": "POST",
       "path": "/core-store/json/import",
       "handler": "spm-file-import-core-store.uploadCoreStoreJSON",
-      "config": {
-        "policies": []
-      }
-    },
-    {
-      "method": "POST",
-      "path": "/user-permissions/json/import",
-      "handler": "spm-file-import-permissions.uploadPermissionsJSON",
-      "config": {
-        "policies": []
-      }
-    },
-    {
-      "method": "POST",
-      "path": "/uploadContentJSON",
-      "handler": "spm-file-import-content.uploadContentJSON",
-      "config": {
-        "policies": []
-      }
-    },
-    {
-      "method": "POST",
-      "path": "/user-permissions/backup",
-      "handler": "spm-migrate.backUpCurrentPermissions",
       "config": {
         "policies": []
       }
@@ -92,6 +84,14 @@
       "method": "POST",
       "path": "/uploadPostgres",
       "handler": "spm-migrate.uploadPostgres",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/uploadContentJSON",
+      "handler": "spm-file-import-content.uploadContentJSON",
       "config": {
         "policies": []
       }
