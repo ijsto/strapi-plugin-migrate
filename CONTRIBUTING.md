@@ -64,6 +64,10 @@ For example:
 /user-permissions/json/export
 ```
 
+#### Organizing routes
+
+We sort our routes by type. So when adding new routes we look at the block where the specific `TARGET_TYPE` is located and insert the snippet where seems appropriate.
+
 ### 7. Creating a PR
 
 When creating a PR, please make sure your code is clean, and you describe 1) what you are changing; 2) why you are changing; 3) what you are adding; 4) why you are adding - and so on. As many details as you can that will help reviewing the PR.
