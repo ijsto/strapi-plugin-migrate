@@ -52,6 +52,18 @@ cd .. && yarn && yarn build --clean && strapi develop --watch-admin
 
 From here on you are good to go - make changes to files in the `/plugins/migrate` folder and they will be reflected in the browser.
 
+#### Naming routes
+
+Internal plugin routes for RESTful requests should follow this pattern:
+```
+/TARGET_TYPE/EXPORT_TYPE/ACTION_TYPE
+```
+
+For example:
+```
+/user-permissions/json/export
+```
+
 ### 7. Creating a PR
 
 When creating a PR, please make sure your code is clean, and you describe 1) what you are changing; 2) why you are changing; 3) what you are adding; 4) why you are adding - and so on. As many details as you can that will help reviewing the PR.
