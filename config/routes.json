@@ -10,7 +10,7 @@
     },
     {
       "method": "GET",
-      "path": "/getModels",
+      "path": "/models/export",
       "handler": "spm-content-types.getModels",
       "config": {
         "policies": []
@@ -18,7 +18,7 @@
     },
     {
       "method": "GET",
-      "path": "/getPermissions",
+      "path": "/user-permissions/export",
       "handler": "spm-file-export-permissions.getPermissions",
       "config": {
         "policies": []
@@ -26,7 +26,7 @@
     },
     {
       "method": "GET",
-      "path": "/getPermissionsJSON",
+      "path": "/user-permissions/json/export",
       "handler": "spm-file-export-permissions.getPermissionsJSON",
       "config": {
         "policies": []
@@ -34,7 +34,7 @@
     },
     {
       "method": "GET",
-      "path": "/getCoreStoreJSON",
+      "path": "/core-store/json/export",
       "handler": "spm-file-export-core-store.getCoreStoreJSON",
       "config": {
         "policies": []
@@ -42,7 +42,7 @@
     },
     {
       "method": "POST",
-      "path": "/uploadCoreStoreJSON",
+      "path": "/core-store/json/import",
       "handler": "spm-file-import-core-store.uploadCoreStoreJSON",
       "config": {
         "policies": []
@@ -50,7 +50,7 @@
     },
     {
       "method": "POST",
-      "path": "/uploadPermissionsJSON",
+      "path": "/user-permissions/json/import",
       "handler": "spm-file-import-permissions.uploadPermissionsJSON",
       "config": {
         "policies": []
@@ -66,7 +66,7 @@
     },
     {
       "method": "POST",
-      "path": "/backUpCurrentPermissions",
+      "path": "/user-permissions/backup",
       "handler": "spm-migrate.backUpCurrentPermissions",
       "config": {
         "policies": []

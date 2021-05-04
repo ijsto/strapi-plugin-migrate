@@ -24,7 +24,7 @@ const ImportCoreStoreFile = () => {
     setLoadingSubmit(true);
     try {
       strapi.lockApp();
-      await request(`/migrate/uploadCoreStoreJSON`, {
+      await request(`/migrate/core-store/json/import`, {
         method: 'POST',
         body: {
           coreStore: fileForUpload,

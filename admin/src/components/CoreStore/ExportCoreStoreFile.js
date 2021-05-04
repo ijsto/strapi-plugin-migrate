@@ -18,7 +18,7 @@ export const StyledCardWidgetFile = styled(CardWidget)`
 export const ExportCoreStoreButton = ({ fileName, label }) => {
   const handleExport = async () => {
     try {
-      const userRoles = await request(`/migrate/getCoreStoreJSON`);
+      const userRoles = await request(`/migrate/core-store/json/export`);
       downloadNamedJson(userRoles, fileName || 'settings-layouts-strapi-migrate');
       strapi.notification.toggle({
         message: 'Settings and layouts exported successfully.',

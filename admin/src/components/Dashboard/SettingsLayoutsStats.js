@@ -12,7 +12,7 @@ const SettingsLayoutsStats = () => {
   const [allRoles, setAllRoles] = useState([]);
   const handlePermissionsExport = async () => {
     try {
-      const userRoles = await request(`/migrate/getPermissions`);
+      const userRoles = await request(`/migrate/user-permissions/export`);
 
       if (userRoles) setAllRoles(userRoles);
     } catch (err) {

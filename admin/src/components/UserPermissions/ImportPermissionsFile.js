@@ -20,7 +20,7 @@ const ImportPermissionsFile = () => {
     setLoadingSubmit(true);
     try {
       strapi.lockApp();
-      await request(`/migrate/uploadPermissionsJSON`, {
+      await request(`/migrate/user-permissions/json/import`, {
         method: 'POST',
         body: {
           rolesAndPermissions: fileForUpload,

@@ -19,7 +19,7 @@ export const StyledCardWidgetFile = styled(CardWidget)`
 export const ExportButton = () => {
   const handlePermissionsDownload = async () => {
     try {
-      const userRoles = await request(`/migrate/getPermissionsJSON`);
+      const userRoles = await request(`/migrate/user-permissions/json/export`);
       downloadNamedJson(userRoles, 'user-permissions-strapi-migrate');
       strapi.notification.toggle({
         message: 'User permissions exported successfully.',

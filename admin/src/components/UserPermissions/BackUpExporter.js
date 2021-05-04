@@ -16,7 +16,7 @@ const BackUpExporter = () => {
     setLoadingRetrieve(true);
 
     try {
-      const response = await request('/migrate/backUpCurrentPermissions', {
+      const response = await request('/migrate/user-permissions/backup', {
         body: { type: 'postgres' },
         method: 'POST',
       });
