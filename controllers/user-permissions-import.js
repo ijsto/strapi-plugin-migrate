@@ -13,7 +13,7 @@ const roleYupSchema = yup.object().shape({
 });
 
 /**
- * spm-file-import-permissions.js controller
+ * user-permissions-import.js controller
  *
  * @description: TODO:
  */

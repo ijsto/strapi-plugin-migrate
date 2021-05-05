@@ -19,7 +19,7 @@
     {
       "method": "GET",
       "path": "/user-permissions/export",
-      "handler": "spm-file-export-permissions.getPermissions",
+      "handler": "user-permissions-export.getPermissions",
       "config": {
         "policies": []
       }
@@ -27,7 +27,7 @@
     {
       "method": "GET",
       "path": "/user-permissions/json/export",
-      "handler": "spm-file-export-permissions.getPermissionsJSON",
+      "handler": "user-permissions-export.getPermissionsJSON",
       "config": {
         "policies": []
       }
@@ -35,7 +35,7 @@
     {
       "method": "POST",
       "path": "/user-permissions/json/import",
-      "handler": "spm-file-import-permissions.uploadPermissionsJSON",
+      "handler": "user-permissions-import.uploadPermissionsJSON",
       "config": {
         "policies": []
       }

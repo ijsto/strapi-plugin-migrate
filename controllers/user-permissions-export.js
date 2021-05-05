@@ -1,7 +1,7 @@
 const { sanitizeEntity } = require('strapi-utils');
 
 /**
- * spm-file-export-permissions.js controller
+ * user-permissions-export.js controller
  *
  * @description: TODO:
  */
