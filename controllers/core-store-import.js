@@ -1,5 +1,5 @@
 /**
- * spm-file-import-core-store.js controller
+ * core-store-import.js controller
  *
  * @description: @TODO:
  */

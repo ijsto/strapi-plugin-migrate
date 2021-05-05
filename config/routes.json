@@ -51,7 +51,7 @@
     {
       "method": "GET",
       "path": "/core-store/json/export",
-      "handler": "spm-file-export-core-store.getCoreStoreJSON",
+      "handler": "core-store-export.getCoreStoreJSON",
       "config": {
         "policies": []
       }
@@ -59,7 +59,7 @@
     {
       "method": "POST",
       "path": "/core-store/json/import",
-      "handler": "spm-file-import-core-store.uploadCoreStoreJSON",
+      "handler": "core-store-import.uploadCoreStoreJSON",
       "config": {
         "policies": []
       }

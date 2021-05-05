@@ -1,7 +1,7 @@
 const { sanitizeEntity } = require('strapi-utils');
 
 /**
- * spm-file-export-core-store.js controller
+ * core-store-export.js controller
  *
  * @description: TODO:
  */
