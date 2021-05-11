@@ -68,7 +68,7 @@ yarn add strapi-plugin-migrate@latest && yarn build --clean
 
 ## Contributing to/Developing this plugin
 
-Thank you for considering to contribute! To find out please read the [CONTRIBUTING.md](https://github.com/ijsto/strapi-plugin-migrate/blob/master/CONTRIBUTING.md).
+Thank you for considering to contribute! To find out please read the [CONTRIBUTING.md](https://github.com/ijsto/strapi-plugin-migrate/blob/main/CONTRIBUTING.md).
 
 Please make sure you read the contirbuting guide before making a PR.
 
