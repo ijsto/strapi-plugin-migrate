@@ -9,6 +9,8 @@ import lifecycles from './lifecycles';
 import trads from './translations';
 import getTrad from './utils/getTrad';
 import basePluginUrl from './basePluginUrl';
+import pluginPermissions from './permissions';
+import { CheckPagePermissions } from 'strapi-helper-plugin';
 
 // Containers
 import CoreStorePage from './containers/CoreStorePage';
@@ -19,8 +21,7 @@ import UserPermissionsPage from './containers/UserPermissionsPage';
 export default strapi => {
   const pluginDescription =
     pluginPkg.strapi.description || pluginPkg.description;
-  const { icon } = pluginPkg.strapi;
-  const { name } = pluginPkg.strapi;
+  const { icon, name } = pluginPkg.strapi;
 
   const plugin = {
     blockerComponent: null,
@@ -52,11 +53,11 @@ export default strapi => {
             name: 'dashboard',
             to: `${basePluginUrl}/dashboard`,
             Component: () => (
-              // <CheckPagePermissions permissions={pluginPermissions.settings}>
-              <HomePage />
-              // </CheckPagePermissions>
+              <CheckPagePermissions permissions={pluginPermissions.settings}>
+                <HomePage />
+              </CheckPagePermissions>
             ),
-            // permissions: pluginPermissions.settings,
+            permissions: pluginPermissions.settings,
           },
           {
             title: {
@@ -66,11 +67,11 @@ export default strapi => {
             name: 'userPermissions',
             to: `${basePluginUrl}/user-permissions`,
             Component: () => (
-              // <CheckPagePermissions permissions={pluginPermissions.settings}>
+              <CheckPagePermissions permissions={pluginPermissions.settings}>
                 <UserPermissionsPage />
-              // </CheckPagePermissions>
+              </CheckPagePermissions>
             ),
-            // permissions: pluginPermissions.settings,
+            permissions: pluginPermissions.settings,
           },
           {
             title: {
@@ -80,11 +81,11 @@ export default strapi => {
             name: 'coreStore',
             to: `${basePluginUrl}/core-store`,
             Component: () => (
-              // <CheckPagePermissions permissions={pluginPermissions.settings}>
+              <CheckPagePermissions permissions={pluginPermissions.settings}>
                 <CoreStorePage />
-              // </CheckPagePermissions>
+              </CheckPagePermissions>
             ),
-            // permissions: pluginPermissions.settings,
+            permissions: pluginPermissions.settings,
           },
           {
             title: {
@@ -94,11 +95,11 @@ export default strapi => {
             name: 'collectionTypes',
             to: `${basePluginUrl}/collection-types`,
             Component: () => (
-              // <CheckPagePermissions permissions={pluginPermissions.settings}>
+              <CheckPagePermissions permissions={pluginPermissions.settings}>
                 <CollectionTypesPage />
-              // </CheckPagePermissions>
+              </CheckPagePermissions>
             ),
-            // permissions: pluginPermissions.settings,
+            permissions: pluginPermissions.settings,
           },
         ],
       },
