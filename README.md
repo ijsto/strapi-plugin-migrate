@@ -48,11 +48,15 @@ or
 npm cache clean --force && npm run dev
 ```
 
-3 - Go to Sidebar Menu > Migrate Strapi
+3 - Go to your Settings > `Dashboard` (in the new `Migrate` section)
 
 4 - Export your data by downloading a JSON file or Copying the Text string
 
 5 - Import your data in the target environment
+
+## Control access to the settings
+
+By default, only admin panel users with `Super Admin`-role are able to access the settings of this plugin. Due to Strapi's restrictions you can't change this behavior if you are using the free Community Edition. When using Enterprise Edition you're able to adjust the settings for this plugin on the edit page of a role under Settings > Administration Panel > Roles > Select a role > Settings tab > Migrate. More information can be found [here](https://strapi.io/documentation/user-docs/latest/users-roles-permissions/configuring-administrator-roles.html#plugins-and-settings).
 
 ## Updating to new version
 

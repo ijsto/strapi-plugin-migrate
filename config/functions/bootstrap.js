@@ -6,7 +6,7 @@ const registerPermissionActions = () => {
     const actions = [
         {
             section: 'settings',
-            displayName: 'Access the Migrate pages in the settings',
+            displayName: 'Access migrate pages in the settings',
             uid: 'settings.access',
             category: 'migrate',
             pluginName: 'migrate'
