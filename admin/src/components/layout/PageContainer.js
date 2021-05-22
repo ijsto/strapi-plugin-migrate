@@ -17,7 +17,6 @@ import { ViewContainer } from 'strapi-helper-plugin';
 
 // import PropTypes from 'prop-types';
 import pluginId from '../../pluginId';
-import Sidebar from '../../containers/Sidebar';
 
 const Wrapper = styled(ViewContainer)`
   .button-secondary {
@@ -34,19 +33,9 @@ const Wrapper = styled(ViewContainer)`
 const PageContainer = ({ children, headerProps }) => {
   return (
     <Wrapper className={pluginId}>
-      <div className="container-fluid">
-        <div className="row">
-          <Sidebar />
-          <div
-            className="col-md-9 content"
-            style={{ paddingLeft: '30px', paddingRight: '30px' }}
-          >
-            <Header {...headerProps} />
+      <Header {...headerProps} />
 
-            <div>{children}</div>
-          </div>
-        </div>
-      </div>
+      <div>{children}</div>
     </Wrapper>
   );
 };

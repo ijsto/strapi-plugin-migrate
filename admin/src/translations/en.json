@@ -1,4 +1,5 @@
 {
+  "Settings.sectionHeading": "Migration",
   "Social.share.twitter.text": "Just saved a bunch of time migrating Strapi data with Strapi-Migrate plugin! https://www.npmjs.com/package/strapi-plugin-migrate",
   "EditPage.submit": "Save",
   "Sidebar.link.dashboard": "Dashboard",

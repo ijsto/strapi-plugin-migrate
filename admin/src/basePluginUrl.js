@@ -1,5 +1,5 @@
 const pluginId = require('./pluginId.js');
 
-const basePluginUrl = `/plugins/${pluginId}`
+const basePluginUrl = `/settings/${pluginId}`
 
 module.exports = basePluginUrl;

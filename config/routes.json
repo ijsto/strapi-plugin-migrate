@@ -5,7 +5,14 @@
       "path": "/",
       "handler": "spm-migrate.index",
       "config": {
-        "policies": []
+        "policies": [
+          "admin::isAuthenticatedAdmin",
+          ["admin::hasPermissions", ["plugins::migrate.settings.access"]]
+        ],
+        "tag": {
+          "plugin": "migrate",
+          "name": "Migrate"
+        }
       }
     },
     {
@@ -13,7 +20,14 @@
       "path": "/models/export",
       "handler": "spm-content-types.getModels",
       "config": {
-        "policies": []
+        "policies": [
+          "admin::isAuthenticatedAdmin",
+          ["admin::hasPermissions", ["plugins::migrate.settings.access"]]
+        ],
+        "tag": {
+          "plugin": "migrate",
+          "name": "Migrate"
+        }
       }
     },
     {
@@ -21,7 +35,14 @@
       "path": "/user-permissions/export",
       "handler": "spm-file-export-permissions.getPermissions",
       "config": {
-        "policies": []
+        "policies": [
+          "admin::isAuthenticatedAdmin",
+          ["admin::hasPermissions", ["plugins::migrate.settings.access"]]
+        ],
+        "tag": {
+          "plugin": "migrate",
+          "name": "Migrate"
+        }
       }
     },
     {
@@ -29,7 +50,14 @@
       "path": "/user-permissions/json/export",
       "handler": "spm-file-export-permissions.getPermissionsJSON",
       "config": {
-        "policies": []
+        "policies": [
+          "admin::isAuthenticatedAdmin",
+          ["admin::hasPermissions", ["plugins::migrate.settings.access"]]
+        ],
+        "tag": {
+          "plugin": "migrate",
+          "name": "Migrate"
+        }
       }
     },
     {
@@ -37,7 +65,14 @@
       "path": "/user-permissions/json/import",
       "handler": "spm-file-import-permissions.uploadPermissionsJSON",
       "config": {
-        "policies": []
+        "policies": [
+          "admin::isAuthenticatedAdmin",
+          ["admin::hasPermissions", ["plugins::migrate.settings.access"]]
+        ],
+        "tag": {
+          "plugin": "migrate",
+          "name": "Migrate"
+        }
       }
     },
     {
@@ -45,7 +80,14 @@
       "path": "/user-permissions/backup",
       "handler": "spm-migrate.backUpCurrentPermissions",
       "config": {
-        "policies": []
+        "policies": [
+          "admin::isAuthenticatedAdmin",
+          ["admin::hasPermissions", ["plugins::migrate.settings.access"]]
+        ],
+        "tag": {
+          "plugin": "migrate",
+          "name": "Migrate"
+        }
       }
     },
     {
@@ -53,7 +95,14 @@
       "path": "/core-store/json/export",
       "handler": "spm-file-export-core-store.getCoreStoreJSON",
       "config": {
-        "policies": []
+        "policies": [
+          "admin::isAuthenticatedAdmin",
+          ["admin::hasPermissions", ["plugins::migrate.settings.access"]]
+        ],
+        "tag": {
+          "plugin": "migrate",
+          "name": "Migrate"
+        }
       }
     },
     {
@@ -61,7 +110,14 @@
       "path": "/core-store/json/import",
       "handler": "spm-file-import-core-store.uploadCoreStoreJSON",
       "config": {
-        "policies": []
+        "policies": [
+          "admin::isAuthenticatedAdmin",
+          ["admin::hasPermissions", ["plugins::migrate.settings.access"]]
+        ],
+        "tag": {
+          "plugin": "migrate",
+          "name": "Migrate"
+        }
       }
     },
     {
@@ -69,7 +125,14 @@
       "path": "/retrieveSqlString",
       "handler": "spm-migrate.retrieveSqlString",
       "config": {
-        "policies": []
+        "policies": [
+          "admin::isAuthenticatedAdmin",
+          ["admin::hasPermissions", ["plugins::migrate.settings.access"]]
+        ],
+        "tag": {
+          "plugin": "migrate",
+          "name": "Migrate"
+        }
       }
     },
     {
@@ -77,7 +140,14 @@
       "path": "/retrieveCurrentRoles",
       "handler": "spm-migrate.retrieveCurrentRoles",
       "config": {
-        "policies": []
+        "policies": [
+          "admin::isAuthenticatedAdmin",
+          ["admin::hasPermissions", ["plugins::migrate.settings.access"]]
+        ],
+        "tag": {
+          "plugin": "migrate",
+          "name": "Migrate"
+        }
       }
     },
     {
@@ -85,7 +155,14 @@
       "path": "/uploadPostgres",
       "handler": "spm-migrate.uploadPostgres",
       "config": {
-        "policies": []
+        "policies": [
+          "admin::isAuthenticatedAdmin",
+          ["admin::hasPermissions", ["plugins::migrate.settings.access"]]
+        ],
+        "tag": {
+          "plugin": "migrate",
+          "name": "Migrate"
+        }
       }
     },
     {
@@ -93,7 +170,14 @@
       "path": "/uploadContentJSON",
       "handler": "spm-file-import-content.uploadContentJSON",
       "config": {
-        "policies": []
+        "policies": [
+          "admin::isAuthenticatedAdmin",
+          ["admin::hasPermissions", ["plugins::migrate.settings.access"]]
+        ],
+        "tag": {
+          "plugin": "migrate",
+          "name": "Migrate"
+        }
       }
     }
   ]
