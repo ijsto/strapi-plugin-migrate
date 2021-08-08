@@ -39,13 +39,13 @@ yarn add strapi-plugin-migrate
 2 - Rebuild your Strapi app and clean your cache
 
 ```bash
-yarn build --clean && yarn dev
+yarn build --clean && yarn develop
 ```
 
 or
 
 ```bash
-npm cache clean --force && npm run dev
+npm cache clean --force && npm run develop
 ```
 
 3 - Go to your Settings > `Dashboard` (in the new `Migrate` section)
