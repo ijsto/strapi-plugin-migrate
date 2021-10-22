@@ -45,7 +45,7 @@ yarn build --clean && yarn develop
 or
 
 ```bash
-npm cache clean --force && npm run develop
+npm cache clean --force && npm run build && npm run develop
 ```
 
 3 - Go to your Settings > `Dashboard` (in the new `Migrate` section)
